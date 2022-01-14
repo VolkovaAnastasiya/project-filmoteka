@@ -1,9 +1,10 @@
 {{#each this}}
-<div class="movie-card">
+<li class="movie-card">
     <img src="{{link}}" alt="{{tags}}" class="movie-card__image">
     <p class="movie-card__title"></p>
 <div class="movie-card__text">
     <P class="movie-card__genre">{{genre}}</P> 
     <p class="movie-card__year">{{date}}</p>
     </div>
-</div>
+</li>
+{{/each}}
