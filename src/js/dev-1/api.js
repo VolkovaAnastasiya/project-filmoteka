@@ -32,7 +32,7 @@ export default class ApiService {
 
   //Запрос для полной информации о фильме
   async fetchFullInfo(id) {
-    const url = `${this.BASE_URL}/movie/${id}/videos?api_key=${this.APIKEY}&language=en-US`;
+    const url = `${this.BASE_URL}/movie/${id}/videos?api_key=${this.API_KEY}&language=en-US`;
       return await fetch(url).then(response => response.json()); 
   }
   
