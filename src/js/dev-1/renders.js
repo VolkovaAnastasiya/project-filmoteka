@@ -4,7 +4,7 @@ import movieLibraryTpl from '../../templates/film-card-library.hbs'
 
 
 
-const gallery = document.querySelector(".cards-gallery");
+const gallery = document.querySelector(".cards-gallery_list");
 
 // Для рендера популярных фильмов
 function renderTrends(data) {
