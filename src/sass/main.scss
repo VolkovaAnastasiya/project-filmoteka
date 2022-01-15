@@ -6,6 +6,10 @@
 // Стили для файла с примером HTML-фрагмента
 @import './variables';
 @import './general';
+
+// <--стили ограничивающего контейнера-->
+@import './base/container';
+
 @import './header';
 @import './cards-gallery';
 @import './movie-card';
