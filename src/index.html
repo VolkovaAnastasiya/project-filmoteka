@@ -12,9 +12,38 @@
     />
   </head>
   <body>
-    <!-- хедер -->
-    <include src="./partials/header.html"></include>
+<header class="header" style="border: 1px solid green; width: 100%; margin: 10px">
 
+  <div class="container">
+    <nav class="nav">
+      <svg class="icon-filmoteka">
+        <use href="./images/sprite.svg#icon-film"></use>
+      </svg>
+      <a href="./index.html" class="logo-word">Filmoteka</a>
+      <div class="header_button-container">
+        <button class="header_home-button">HOME</button>
+        <button class="header_library-button">MY LIBRARY</button>
+      </div>
+    </nav>
+
+    <form class="search-form">
+      <input class="search-form_input" type="text" name="movie-to-search" placeholder="Поиск фильмов" />
+      <button class="search-form_submit-button" type="submit" style="width: 20px; height: 20px">
+        <svg class="icon-search">
+          <use href="./images/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <!-- при активной странице библиотеки -->
+    <div class="header_switch-box--library-page">
+      <button class="header_watched-button">WATCHED</button>
+      <button class="header_queue-button">QUEUE</button>
+    </div>
+
+  </div>
+
+</header>
     <section style="border: 1px solid red; width: 100%; margin: 10px">
       <h2 class="visually-hidden">Found movies</h2>
 
