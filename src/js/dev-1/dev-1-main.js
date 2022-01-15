@@ -2,7 +2,7 @@ console.log(1);
 //import movieTpl from '../../templates/film-card-main.hbs'
 //import movieLibraryTpl from '../../templates/film-card-library.hbs'
 
-/*
+
 // Для рендера популярных фильмов
 function renderTrends(data) {
   const markup = movieTpl(data);
@@ -17,4 +17,4 @@ function renderLibrary(data) {
   gallery.insertAdjacentHTML('beforeend', markup);
 }
 
-export { renderTrends, renderLibrary };*/
+export { renderTrends, renderLibrary };
