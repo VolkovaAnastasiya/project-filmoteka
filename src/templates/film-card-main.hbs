@@ -1,10 +1,10 @@
 {{#each this}}
 <li class="movie-card">
-    <img src="{{link}}" alt="{{tags}}" class="movie-card__image">
-    <p class="movie-card__title"></p>
+    <img src="https://www.themoviedb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" class="movie-card__image">
+    <p class="movie-card__title">{{title}}</p>
 <div class="movie-card__text">
     <P class="movie-card__genre">{{genre}}</P> 
-    <p class="movie-card__year">{{date}}</p>
+    <p class="movie-card__year">{{release_date}}</p>
     </div>
 </li>
 {{/each}}
