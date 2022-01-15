@@ -7,10 +7,13 @@ import './dev-6/dev-6-main.js';
 import './dev-7/dev-7-main.js';
 
 import ApiService from './dev-1/api.js';
+import { renderTrends, renderLibrary } from './dev-1/dev-1-main.js';
 
 const apiService = new ApiService();
-apiService.fetchMovieTrends();
+apiService.fetchMovieTrends().then(renderTrends);
+
 
 
 const API_KEY = `718b7347396ac1052bb7bdc76b11dbfa`;
+
 
