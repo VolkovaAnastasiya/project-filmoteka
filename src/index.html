@@ -70,13 +70,15 @@
 
     <footer style="border: 1px solid yellow; width: 100%; margin: 10px">
       <p class="copyright">
-        &copy; 2020 | All Rights Reserved | Developed with
-        <img
+        &copy; 2020 | All Rights Reserved | Developed with <svg class="" style="width: 14px; height: 13px">
+        <use href="./images/sprite.svg#icon-vector"></use>
+      </svg>
+        <!-- <img
           src="https://pngimg.com/uploads/heart/heart_PNG51344.png"
           alt="heart"
           width="15"
           height="15"
-        />
+        /> -->
         by
         <span class="copyright_modal-open-text">GoIT Students</span>
       </p>
@@ -118,6 +120,19 @@
       <button class="modal-details_watched-button"><span>ADD TO</span> WATCHED</button>
       <button class="modal-details_queue-button"><span>ADD TO</span> QUEUE</button>
     </div>
+
+<!-- Modal film -->
+<!-- <button type="submit" film-modal-open>OPEN</button> -->
+
+<div class="backdrop__film is-hidden" film-modal>
+  <div class="modal__film">
+    <button class="modal-close-button__film" film-modal-close>
+      <svg class="modal-close-icon__film">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    </div>
+</div>
 
     <div class="modal-project-team"></div>
 
