@@ -5,4 +5,12 @@ import './dev-4/dev-4-main.js';
 import './dev-5/dev-5-main.js';
 import './dev-6/dev-6-main.js';
 import './dev-7/dev-7-main.js';
+
+import ApiService from './dev-1/api.js';
+
+const apiService = new ApiService();
+apiService.fetchMovieTrends();
+
+
 const API_KEY = `718b7347396ac1052bb7bdc76b11dbfa`;
+
