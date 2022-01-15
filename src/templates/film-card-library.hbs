@@ -1,11 +1,11 @@
 {{#each this}}
 <li class="movie-card">
-    <img src="{{link}}" alt="{{tags}}" class="movie-card__image">
+    <img src="{{backdrop_path}}" alt="{{tags}}" class="movie-card__image">
     <p class="movie-card__title"></p>
 <div class="movie-card__text">
     <P class="movie-card__genre">{{genre}}</P> 
-    <p class="movie-card__year">{{date}}</p>
-    <p class ="movie-card__rating"></p>
+    <p class="movie-card__year">{{release-date}}</p>
+    <p class ="movie-card__rating">{{vote-average}}</p>
     </div>
 </li>
 {{/each}}
