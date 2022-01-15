@@ -2,9 +2,6 @@ console.log(1);
 //import movieTpl from '../../templates/film-card-main.hbs'
 //import movieLibraryTpl from '../../templates/film-card-library.hbs'
 
-
-apiService.fetchMovieTrends();
-
 /*
 // Для рендера популярных фильмов
 function renderTrends(data) {
