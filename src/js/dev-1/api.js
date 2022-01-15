@@ -16,7 +16,7 @@ export default class ApiService {
           .then(data => {
               console.log(data);
               this.incrementPage();
-              return data;
+              return data.results;
           });
   }
   // Запрос с использованием поисковой строки
