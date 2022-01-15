@@ -1,34 +1,34 @@
 <div class="modal-details">
       <img
         class="modal-details_image"
-        src="https://encrypted-tbn0.gstatic.com/{{poster_path}}"
+        src="https://www.themoviedb.org/t/p/w500{{poster_path}}"   
         alt="image is not found"
       />
       <div class="movie-details-data">
-        <h2 class="movie-details-data_title">EXEMPLE NAME</h2>
+        <h2 class="movie-details-data_title">{{title}}</h2>
         <table class="movie-details-data_table">
           <tr>
-            <td>vote</td>
-            <td><span>7</span> / <span>1260</span></td>
+            <td>Vote/Votes</td>
+            <td><span>{{vote_average}}</span> / <span>{{vote_count}}</span></td>
           </tr>
           <tr>
-            <td>popularity</td>
-            <td>100.2</td>
+            <td>Popularity</td>
+            <td>{{popularity}}</td>
           </tr>
           <tr>
-            <td>title</td>
-            <td>exemple</td>
+            <td>original Title</td>
+            <td>{{original_title}}</td>
           </tr>
           <tr>
-            <td>genre</td>
-            <td>western</td>
+            <td>Genre</td>
+            {{#each genres}}
+            <td>{{this.name}}</td>
+            {{/each}}
           </tr>
         </table>
         <p class="movie-details-data_description-title">ABOUT</p>
         <p class="movie-details-data_description">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam id veniam sed nemo
-          molestiae a, voluptatum libero voluptates odio aliquid eos repudiandae nam nulla omnis.
-          Modi quaerat enim quam deleniti!
+       {{overview}}
         </p>
       </div>
       <button class="modal-details_watched-button"><span>ADD TO</span> WATCHED</button>
