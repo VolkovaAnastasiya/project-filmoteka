@@ -1,6 +1,10 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
+import ApiService from './api.js'
+import { renderTrends } from './renders.js';
+
+
 const options = {
   // below default value of options
   totalItems: 400,
@@ -26,11 +30,23 @@ const options = {
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },
-  usageStatistics: false,
 };
+
 const pagination = new Pagination('pagination', options);
+const currentPage = pagination.getCurrentPage();
+const list = document.querySelector('.cards-gallery__list');
 
-/*const container = document.getElementById('tui-pagination-container');
-const instance = new Pagination(container, options);
+const apiService = new ApiService();
+apiService.fetchMovieTrends(currentPage);
 
-instance.getCurrentPage();*/
+
+pagination.on('afterMove', event => {
+  const actualPage = event.page;
+
+    list.innerHTML = '';
+    apiService.fetchMovieTrends(actualPage).then(renderTrends);
+   
+  
+});
+export default pagination;
+
