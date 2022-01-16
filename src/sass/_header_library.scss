@@ -1,0 +1,128 @@
+.header_library {
+  padding: 45px 0;
+  background-color: rgba(0, 0, 0, 0.56);
+  height: 230px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/mobile/header_background_library@1x.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/mobile/header_background_library@2x.jpg');
+  }
+  @media screen and (min-width: 769px) {
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/tablet/header_background_library@1x.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/tablet/header_background_library@2x.jpg');
+    }
+  }
+  @media screen and (min-width: 1025px) {
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/desktop/header_background_library@1x.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/desktop/header_background_library@2x.jpg');
+    }
+  }
+}
+
+.header_switch-box--library-page {
+  // display: flex;
+  // align-items: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  border-color: #fff;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background: none;
+}
+
+.header_watched-button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  width: 112px;
+  height: 44px;
+  left: 241px;
+  top: 121px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.56);
+  color: #fff;
+  border-color: #fff;
+
+  @media screen and (min-width: 768px) {
+    width: 136px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
+}
+
+.header_queue-button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  margin-left: 19px;
+
+  width: 112px;
+  height: 44px;
+  left: 241px;
+  top: 121px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.56);
+  color: #fff;
+  border-color: #fff;
+
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
+}
+
+.header_watched-button:hover,
+.header_watched-button:focus,
+.header_queue-button:hover,
+.header_queue-button:focus {
+  background: #ff6b01;
+  border-color: #ff6b01;
+}
+
+// для кнопок
+.active {
+  background-color: #ff6b01;
+  border: 0;
+}
