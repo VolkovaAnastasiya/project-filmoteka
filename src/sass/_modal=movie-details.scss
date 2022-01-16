@@ -1,0 +1,64 @@
+ .is-overflow{
+    overflow: hidden;
+  }
+
+.backdrop__film {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+ overflow: auto;
+  opacity: 1;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+
+.modal__film {
+  height: 80vh;
+  width: 60vw;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+//   @media screen and (min-width: 480px) {
+//     width: 450px;
+//   }
+//   @media screen and (min-width: 768px) {
+//     width: 600px;
+//   }
+//   @media screen and (min-width: 1280px) {
+//     width: 1000px;
+//   }
+}
+.modal-close-button__film {
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: inherit;
+  padding: 6px;
+  top: 8px;
+  right: 8px;
+
+//   &:hover svg,
+//   &:focus svg {
+//     fill: $soc-icon-hover;
+//   }
+}
+
+
+.modal-close-icon__film{
+    fill: #000;
+}

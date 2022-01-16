@@ -50,7 +50,7 @@
       <h2 class="visually-hidden">Found movies</h2>
 
       <div class="cards-gallery">
-        <ul class="cards-gallery__list"></ul>
+        <ul class="cards-gallery__list" film-modal-open></ul>
       </div>
 
       <div class="pagination container">
@@ -85,7 +85,7 @@
       </p>
     </footer>
 
-    <div class="modal-details">
+    <!-- <div class="modal-details">
       <img
         class="modal-details_image"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_O1MGZeZnRHLdzRE-Kk9fOGIbPGhMFUkFd8RTDwJ6xGGgdGEQRCP6kzS9L3APD0QLQFU&usqp=CAU"
@@ -120,18 +120,19 @@
       </div>
       <button class="modal-details_watched-button"><span>ADD TO</span> WATCHED</button>
       <button class="modal-details_queue-button"><span>ADD TO</span> QUEUE</button>
-    </div>
+    </div> -->
 
     <!-- Modal film -->
     <!-- <button type="submit" film-modal-open>OPEN</button> -->
 
-    <div class="backdrop__film is-hidden" film-modal>
-      <div class="modal__film">
-        <button class="modal-close-button__film" film-modal-close>
-          <svg class="modal-close-icon__film">
-            <use href="./images/sprite.svg#icon-close"></use>
+    <div class="backdrop__film is-hidden">
+      <div class="modal__film" film-modal>
+        <button class="modal-close-button__film" film-modal-close>X
+          <svg class="modal-close-icon__film" width='30' height='30'>
+            <use href="./images/close.svg"></use>
           </svg>
         </button>
+        <div class="modal__film-detalies"></div>
       </div>
     </div>
 
