@@ -40,13 +40,22 @@ const apiService = new ApiService();
 apiService.fetchMovieTrends(currentPage);
 
 
-pagination.on('afterMove', event => {
+pagination.on('beforeMove', async evt => {
+  apiService.page = evt.page;
+
+  list.innerHTML = '';
+  apiService.fetchMovieTrends().then(renderTrends);
+  
+});
+
+
+/*pagination.on('afterMove', event => {
   const actualPage = event.page;
 
     list.innerHTML = '';
     apiService.fetchMovieTrends(actualPage).then(renderTrends);
    
   
-});
+});*/
 export default pagination;
 
