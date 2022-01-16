@@ -72,17 +72,30 @@
 }
 
 .logo-word {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+
+  text-decoration: none;
+  // cursor: pointer;
   color: #ffffff;
   display: none;
 
   @media screen and (min-width: 769px) {
     padding-left: 12px;
     font-size: 30px;
-    line-height: 1, 17;
+    line-height: 1.17;
     text-transform: none;
 
     display: inline-block;
   }
+}
+
+.nav-logo {
+  text-decoration: none;
+  margin-right: auto;
 }
 
 .icon-filmoteka {
@@ -90,7 +103,21 @@
   height: 24px;
 }
 
-.form-search {
+.header_home-button {
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+}
+
+.header_library-button {
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+}
+
+.search-form {
   width: 100%;
   position: relative;
 
@@ -101,7 +128,8 @@
   }
 }
 
-.search-form {
+.search-form_input {
+  margin: auto;
   width: 100%;
   position: relative;
 
@@ -118,14 +146,22 @@
   fill: #ffffff;
 }
 
-.search-input {
+.search-form_submit-button {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  border: none;
+  background: none;
+}
+
+.search-form_input {
   width: 100%;
   background: none;
   border: none;
   outline: none;
   border-bottom: 0.5px solid #ffffff;
   font-size: 14px;
-  line-height: 1, 14;
+  line-height: 1.14;
   color: #ffffff;
   padding-right: 15px;
 
@@ -142,10 +178,10 @@
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  color: #ff6b01;
+  // color: #ff6b01;
   // padding-top: 32px;
   // padding-bottom: 32px;
-  display: block;
+  // display: block;
 }
 
 .current-link::after {
@@ -159,4 +195,72 @@
   bottom: -3px;
   // border-radius: 2px;
   opacity: 1;
+}
+
+.header_switch-box--library-page {
+  // display: flex;
+  // align-items: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  border-color: #fff;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background: none;
+}
+
+.header_watched-button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  padding-left: 0;
+  padding-right: 0;
+
+  width: 136px;
+  height: 44px;
+  left: 241px;
+  top: 121px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.56);
+  color: #fff;
+  border-color: #fff;
+}
+
+.header_queue-button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  padding-left: 0;
+  padding-right: 0;
+
+  width: 136px;
+  height: 44px;
+  left: 241px;
+  top: 121px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.56);
+  color: #fff;
+  border-color: #fff;
+}
+
+.header_watched-button:hover,
+.header_queue-button:hover {
+  background: #ff6b01;
+  border-color: #ff6b01;
+}
+
+// для кнопок
+.active {
+  background-color: #ff6b01;
+  border: 0;
 }
