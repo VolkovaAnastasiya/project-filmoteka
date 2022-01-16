@@ -14,7 +14,10 @@ import { renderModal } from './dev-3/dev-3-main.js'
 
 const API_KEY = `718b7347396ac1052bb7bdc76b11dbfa`;
 const apiService = new ApiService();
-apiService.fetchMovieTrends().then(renderTrends);
+  apiService.fetchMovieTrends().then(data => {
+  localStorage.setItem('filmInfo', JSON.stringify(data));
+  return data
+}).then(renderTrends);
 
 apiService.fetchFullInfo().then(renderModal);
 
