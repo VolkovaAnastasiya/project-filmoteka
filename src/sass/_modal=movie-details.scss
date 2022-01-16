@@ -1,3 +1,5 @@
+ //modal
+ 
  .is-overflow{
     overflow: hidden;
   }
@@ -21,7 +23,7 @@
 
 .modal__film {
   height: 80vh;
-  width: 60vw;
+  width: 58vw;
   background-color: #fff;
   position: absolute;
   top: 50%;
@@ -63,11 +65,15 @@
     fill: #000;
 }
 
-
+//template
 .modal-details{
   display: flex;
 }
 
 .modal-details_btn-box{
   display: flex;
+}
+
+modal-details_image-box{
+  
 }
