@@ -15,27 +15,31 @@
     <header class="header">
       <div class="container">
         <nav class="nav">
-          <svg class="icon-filmoteka">
-            <use href="./images/sprite.svg#icon-film"></use>
-          </svg>
-          <a href="./index.html" class="logo-word">Filmoteka</a>
+          <a href="./index.html" class="nav-logo">
+            <svg class="icon-filmoteka">
+              <use href="./images/sprite.svg#icon-film"></use>
+            </svg>
+            <span class="logo-word">Filmoteka</span>
+          </a>
+
           <div class="header_button-container">
-            <button class="header_home-button">HOME</button>
+            <button class="header_home-button current-link ">HOME</button>
             <button class="header_library-button">MY LIBRARY</button>
           </div>
         </nav>
 
         <form class="search-form">
+          <button class="search-form_submit-button" type="submit" style="width: 20px; height: 20px">
+            <svg class="icon-search">
+              <use href="./images/sprite.svg#icon-search"></use>
+            </svg>
           <input
             class="search-form_input"
             type="text"
             name="movie-to-search"
             placeholder="Поиск фильмов"
           />
-          <button class="search-form_submit-button" type="submit" style="width: 20px; height: 20px">
-            <svg class="icon-search">
-              <use href="./images/sprite.svg#icon-search"></use>
-            </svg>
+          
           </button>
         </form>
 
