@@ -7,15 +7,18 @@ const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
 
-searchForm.addEventListener('submit', renderSearch);
 
+searchForm.addEventListener('submit', onFormSubmit);
 
-function renderSearch(event) {
-    if (event) { event.preventDefault(); }
+function onFormSubmit(evt) { 
+    evt.preventDefault();
+    apiService.page = 1;
+    renderSearch()
+}
 
+function renderSearch() {
     const searchFieldValue = document.querySelector('.search-form_input').value;
     if (searchFieldValue) {
-        apiService.page = 1;
         apiService.searchQuery  = searchFieldValue;
     apiService.fetchSearchMovies().then(renderSearchedFilms)
 
@@ -23,7 +26,6 @@ function renderSearch(event) {
     }
     else {
         gallery.innerHTML = '';
-          apiService.page = 1;
         apiService.fetchMovieTrends().then(renderTrends)
         console.log('ytn htp', searchFieldValue)
     }
@@ -41,6 +43,28 @@ function renderSearch(event) {
             
 }
     
+apiService.fetchMovieGenre().then(idToGenre);
 
+function idToGenre(list) {
+    const currentInfo = JSON.parse(localStorage.getItem('searchResults'));
+  
+
+    for (const film of currentInfo) {
+        
+        film.genre_ids.forEach(element => {
+
+            list.map((unit) => {
+                if (unit.id === element) {
+                    element = unit.name;
+                    film.genre_name.push(element);
+}
+            }) 
+            
+        });
+        
+    }
+
+    
+}
 
 export { renderSearch }
