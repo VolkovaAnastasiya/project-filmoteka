@@ -56,7 +56,7 @@ function idToGenre(list) {
             list.map((unit) => {
                 if (unit.id === element) {
                     element = unit.name;
-                    film.genre_name.push(element);
+                    
 }
             }) 
             
