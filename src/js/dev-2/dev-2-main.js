@@ -15,7 +15,8 @@ function renderSearch(event) {
 
     const searchFieldValue = document.querySelector('.search-form_input').value;
     if (searchFieldValue) {
-        apiService.searchQuery = searchFieldValue;
+        apiService.page = 1;
+        apiService.searchQuery  = searchFieldValue;
     apiService.fetchSearchMovies().then(renderSearchedFilms)
 
         console.log(searchFieldValue);
@@ -38,5 +39,8 @@ function renderSearch(event) {
              gallery.innerHTML = markup;
             localStorage.setItem("searchResults", JSON.stringify(data.results));}
             
-    }
+}
+    
+
+
 export { renderSearch }
