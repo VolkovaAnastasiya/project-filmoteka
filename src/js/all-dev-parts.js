@@ -19,7 +19,7 @@ const apiService = new ApiService();
   return data
 }).then(renderTrends);
 
-apiService.fetchFullInfo().then(renderModal);
+apiService.fetchFullInfo().then();
 
 import './dev-1/pagination.js';
 
