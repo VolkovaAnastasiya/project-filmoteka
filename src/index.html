@@ -16,7 +16,7 @@
     />
   </head>
   <body>
-    <header class="header">
+    <header class="header header-js">
       <div class="container">
         <nav class="nav">
           <a href="./index.html" class="nav-logo">
@@ -27,19 +27,21 @@
           </a>
 
           <div class="header_button-container">
-            <button class="header_home-button current-link">HOME</button>
-            <button class="header_library-button">MY LIBRARY</button>
+
+            <button class="header_home-button current-link btn-home-js">HOME</button>
+            <button class="header_library-button btn-myLibrary-js">MY LIBRARY</button>
+
           </div>
         </nav>
 
-        <form class="search-form">
+        <form class="search-form form-js">
           <input
             class="search-form_input"
             type="text"
             name="movie-to-search"
             placeholder="Поиск фильмов"
           />
-          <button class="search-form_submit-button" type="submit" style="width: 20px; height: 20px">
+          <button class="search-form_submit-button btn-submit-js" type="submit" style="width: 20px; height: 20px">
             <svg class="icon-search">
               <use href="./images/sprite.svg#icon-search"></use>
             </svg>
@@ -47,9 +49,9 @@
         </form>
 
         <!-- при активной странице библиотеки -->
-        <div class="header_switch-box--library-page">
-          <button class="header_watched-button">WATCHED</button>
-          <button class="header_queue-button">QUEUE</button>
+        <div class="header_switch-box--library-page visually-hidden nav-library-js">
+          <button class="header_watched-button btn-watched-js">WATCHED</button>
+          <button class="header_queue-button btn-queue-js">QUEUE</button>
         </div>
       </div>
     </header>

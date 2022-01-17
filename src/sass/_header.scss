@@ -19,7 +19,7 @@
       url('../images/mobile/header_background_homepage@2x.jpg');
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56) rgba(0, 0, 0, 0.56)),
       url('../images/tablet/header_background_homepage@1x.jpg');
     background-repeat: no-repeat;
@@ -104,6 +104,8 @@
 }
 
 .header_home-button {
+  margin-right: 39px;
+  padding: 0;
   background: none;
   border: none;
   outline: none;
@@ -111,6 +113,7 @@
 }
 
 .header_library-button {
+  padding: 0;
   background: none;
   border: none;
   outline: none;
