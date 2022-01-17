@@ -7,20 +7,26 @@ const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
 
+searchForm.addEventListener('submit', renderSearch);
 
-searchForm.addEventListener('submit', onFormSubmit);
 
-function onFormSubmit(evt) { 
-    evt.preventDefault();
-    apiService.page = 1;
-    renderSearch()
-}
+function renderSearch(event) {
 
-function renderSearch() {
+
+
+
+    if (event) { event.preventDefault();}
+        
     const searchFieldValue = document.querySelector('.search-form_input').value;
+    
+    
     if (searchFieldValue) {
+        sessionStorage.setItem('search', searchFieldValue)
+
+
+
         apiService.searchQuery  = searchFieldValue;
-    apiService.fetchSearchMovies().then(renderSearchedFilms)
+        apiService.fetchSearchMovies().then(renderSearchedFilms)
     }
     else {
         gallery.innerHTML = '';
@@ -69,3 +75,6 @@ function idToGenre(genreObject, film_list) {
 }
 
 export { renderSearch, idToGenre }
+
+
+ 
