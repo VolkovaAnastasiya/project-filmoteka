@@ -1,9 +1,13 @@
 {{#each this}}
-<li class="movie-card" id="{{id}}">
+<li class="movie-card">
+     {{#if poster_path}}
     <img src="https://www.themoviedb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" class="movie-card__image">
+    {{else}}
+    <img src='https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png' alt="{{original_title}}" class="movie-card__image">
+    {{/if}}
     <p class="movie-card__title">{{title}}</p>
 <div class="movie-card__text">
-    <P class="movie-card__genre">{{genre}}</P> 
+   {{#each genre_ids}} <p class="movie-card__genre">{{this}}</p> {{/each}}
     <p class="movie-card__year">{{release_date}}</p>
     </div>
 </li>
