@@ -21,8 +21,6 @@ function renderSearch() {
     if (searchFieldValue) {
         apiService.searchQuery  = searchFieldValue;
     apiService.fetchSearchMovies().then(renderSearchedFilms)
-
-        console.log(searchFieldValue);
     }
     else {
         gallery.innerHTML = '';
@@ -39,32 +37,35 @@ function renderSearch() {
                
                 const markup = movieTpl(data.results);
              gallery.innerHTML = markup;
-            localStorage.setItem("searchResults", JSON.stringify(data.results));}
+            localStorage.setItem("filmInfo", JSON.stringify(data.results));}
             
 }
     
-apiService.fetchMovieGenre().then(idToGenre);
 
-function idToGenre(list) {
-    const currentInfo = JSON.parse(localStorage.getItem('searchResults'));
-  
 
-    for (const film of currentInfo) {
-        
-        film.genre_ids.forEach(element => {
+function idToGenre(genreObject, film_list) {
+    let storageWithGenre = [];
 
-            list.map((unit) => {
-                if (unit.id === element) {
-                    element = unit.name;
-                    
+    for (const film of film_list) {
+        let genre_list = [];
+        film.genre_ids.forEach(genre => {
+
+            genreObject.map((unit) => {
+
+                if (unit.id === genre) {
+                    genre = unit.name;
+                    genre_list.push(genre) ;
+                    film.genre_name = genre_list;                    
 }
             }) 
             
         });
-        
-    }
-
-    
+       
+        storageWithGenre.push(film);
+         
+    }  
+    console.log(storageWithGenre);
+    localStorage.setItem('storageGenre',JSON.stringify(storageWithGenre))
 }
 
-export { renderSearch }
+export { renderSearch, idToGenre }
