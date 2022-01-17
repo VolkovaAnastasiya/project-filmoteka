@@ -1,9 +1,17 @@
-<div class="modal-details">
-      <img
-        class="modal-details_image"
-        src="https://www.themoviedb.org/t/p/w500{{poster_path}}"   
-        alt="{{original_title}}"
-      />
+<div class="modal-details" id="{{id}}">
+  
+    <div class="modal-details_image-box">
+        {{#if poster_path}}
+        <img class="modal-details_image" src="https://www.themoviedb.org/t/p/w500{{poster_path}}"
+            onerror="this.onerror=null;this.src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'"
+            alt="{{title}}" title="{{title}}" />
+        {{/if}}
+        {{#unless poster_path}}
+        <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"
+            alt="film photo">
+        {{/unless}}
+    </div>
+      
       <div class="movie-details-data">
         <h2 class="movie-details-data_title">{{title}}</h2>
         <table class="movie-details-data_table">
@@ -21,9 +29,13 @@
           </tr>
           <tr>
             <td>Genre</td>
-            {{#each genres}}
-            <td>{{this.name}}</td>
-            {{/each}}
+           
+            <td>  {{#if genres}}
+                        {{#each genres}}
+                        <span>{{this.name}}{{#unless @last}},{{/unless}}</span>
+                        {{/each}}
+                        {{else}}<span>N/A</span>
+                        {{/if}}</td>
           </tr>
         </table>
         <p class="movie-details-data_description-title">ABOUT</p>
