@@ -1,6 +1,7 @@
 import movieTpl from '../../templates/film-card-main.hbs'
 import ApiService from '../dev-1/api.js';
 import { renderTrends } from '../dev-1/renders';
+import pagination from '../dev-1/pagination';
 const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
@@ -11,7 +12,9 @@ searchForm.addEventListener('submit', onFormSubmit);
 function onFormSubmit(evt) { 
     evt.preventDefault();
     apiService.page = 1;
-    renderSearch()
+    renderSearch();
+    pagination.reset();
+    
 }
 // Добавляет прием в функцию страницы
 function renderSearch(currentPage) {
