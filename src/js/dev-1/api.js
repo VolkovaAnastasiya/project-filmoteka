@@ -34,7 +34,9 @@ localStorage.setItem("filmInfo", JSON.stringify(data.results));
 localStorage.setItem("filmInfo", JSON.stringify(data.results));
 
               this.incrementPage();
+        
               return data.results;
+
           }); 
   }
 
