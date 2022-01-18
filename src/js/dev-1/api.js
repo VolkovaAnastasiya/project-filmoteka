@@ -12,8 +12,12 @@ export default class ApiService {
   async fetchMovieTrends() {
     const url = `${this.BASE_URL}/movie/popular?api_key=${this.API_KEY}&page=${this.page}`;
       return await fetch(url)
-          .then(response => response.json())
-          .then(data => {
+        .then(response => response.json())
+        .then(data => {
+            
+          // Добавляет запись в хранилище при фетче
+localStorage.setItem("filmInfo", JSON.stringify(data.results));
+
               console.log(data);
               this.incrementPage();
               return data.results;
@@ -23,8 +27,12 @@ export default class ApiService {
   async fetchSearchMovies() {
     const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
       return await fetch(url)
-          .then(response => response.json())
-          .then(data => {
+        .then(response => response.json())
+        .then(data => {
+            
+          // Добавляет запись в хранилище при фетче
+localStorage.setItem("filmInfo", JSON.stringify(data.results));
+
               this.incrementPage();
               return data;
           }); 
