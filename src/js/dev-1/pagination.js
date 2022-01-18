@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { renderSearch } from '../dev-2/dev-2-main.js';
 
 import ApiService from './api.js'
 import { renderTrends } from './renders.js';
@@ -40,11 +41,25 @@ const apiService = new ApiService();
 apiService.fetchMovieTrends(currentPage);
 
 
+
 pagination.on('beforeMove', async evt => {
   apiService.page = evt.page;
 
   list.innerHTML = '';
-  apiService.fetchMovieTrends().then(renderTrends);
+  
+  
+  if (sessionStorage.getItem('search')) {
+    renderSearch();
+    
+
+  }
+
+  else {
+    apiService.fetchMovieTrends().then(renderTrends);
+  }
+  
+
+  console.log(sessionStorage.getItem('search'))
   
 });
 
@@ -57,5 +72,6 @@ pagination.on('beforeMove', async evt => {
    
   
 });*/
+
 export default pagination;
 
