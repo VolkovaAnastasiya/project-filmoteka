@@ -11,6 +11,7 @@ import { renderTrends, renderLibrary } from './dev-1/renders.js';
 import { renderModal } from './dev-3/dev-3-main.js';
 import { renderSearch, idToGenre } from './dev-2/dev-2-main.js';
 
+
 const apiService = new ApiService();
 apiService.fetchMovieGenre().then(saveGenreList);
 
@@ -20,12 +21,15 @@ function saveGenreList(list) {
 
 apiService.fetchMovieTrends().then(renderTrends);
 
+
 idToGenre(
   JSON.parse(localStorage.getItem('genreList')),
   JSON.parse(localStorage.getItem('filmInfo')),
 );
 
+
 import './dev-1/pagination.js';
 
 localStorage.setItem('watched', JSON.stringify([]));
 localStorage.setItem('queue', JSON.stringify([]));
+
