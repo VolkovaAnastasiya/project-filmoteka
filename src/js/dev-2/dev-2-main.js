@@ -13,40 +13,45 @@ function onFormSubmit(evt) {
     apiService.page = 1;
     renderSearch()
 }
-// Добавляет прием в функцию страницы
+
 function renderSearch(currentPage) {
     const searchFieldValue = document.querySelector('.search-form_input').value;
-    // делает проверку на наличие передаваемой страницы
+  
     if (currentPage) { apiService.page = currentPage; }
     
     if (searchFieldValue) {
         
          sessionStorage.setItem('search', searchFieldValue)
         apiService.searchQuery  = searchFieldValue;
-    apiService.fetchSearchMovies().then(renderSearchedFilms)
+    apiService.fetchSearchMovies().then(idToGenre).then(renderSearchedFilms)
     }
     else {
         gallery.innerHTML = '';
-        apiService.fetchMovieTrends().then(renderTrends)
+        apiService.fetchMovieTrends().then(idToGenre).then(renderTrends)
         console.log('ytn htp', searchFieldValue)
     }
 }
- function renderSearchedFilms(data) {
-           if (data.results.length === 0) {
-               
+function renderSearchedFilms(data) {
+    
+           if (data.length === 0) {
+               console.log(data);
               gallery.innerHTML = "SORRY WE CANT FIND ANY MOVIE WITH THIS NAME";
             }
             else {  
-               
-                const markup = movieTpl(data.results);
+                const markup = movieTpl(data);
              gallery.innerHTML = markup;
            }
             
 }
     
-function idToGenre(genreObject, film_list) {
-    let storageWithGenre = [];
-    for (const film of film_list) {
+function idToGenre(film_list) {
+    
+changeToName(JSON.parse(localStorage.getItem('genreList')), film_list)
+
+    function changeToName(genreObject, films) {
+        let storageWithGenre = [];
+        console.log(films);
+    for (const film of films) {
         let genre_list = [];
         film.genre_ids.forEach(genre => {
             genreObject.map((unit) => {
@@ -62,8 +67,9 @@ function idToGenre(genreObject, film_list) {
         storageWithGenre.push(film);
          
     }  
-    console.log(storageWithGenre);
-    localStorage.setItem('storageGenre',JSON.stringify(storageWithGenre))
+    localStorage.setItem('filmInfo',JSON.stringify(storageWithGenre))
+    }
+    return film_list;
 }
 
 export { renderSearch, idToGenre }
