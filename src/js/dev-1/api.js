@@ -39,16 +39,7 @@ export default class ApiService {
   //Запрос для полной информации о фильме
   async fetchFullInfo(id) {
     const url = `${this.BASE_URL}/movie/${id}/videos?api_key=${this.API_KEY}&language=en-US`;
-    return await fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // Добавляет запись в хранилище при фетче
-        localStorage.setItem('filmInfo', JSON.stringify(data.results));
-
-        this.incrementPage();
-
-        return data.results;
-      });
+    return await fetch(url).then(response => response.json());
   }
 
   //Запрос для жанров
