@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export default class ApiService {
   constructor() {
     this.searchQuery = '';
@@ -18,7 +19,9 @@ export default class ApiService {
           // Добавляет запись в хранилище при фетче
 localStorage.setItem("filmInfo", JSON.stringify(data.results));
 
-              console.log(data);
+          console.log(data);
+          const item = data.total_pages;
+          console.log(item);
               this.incrementPage();
               return data.results;
           });

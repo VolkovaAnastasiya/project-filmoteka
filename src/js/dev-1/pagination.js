@@ -31,15 +31,16 @@ const options = {
   },
 };
 const pagination = new Pagination('pagination', options);
-const currentPage = pagination.getCurrentPage();
+//const currentPage = pagination.getCurrentPage();
 const list = document.querySelector('.cards-gallery__list');
 const apiService = new ApiService();
 // apiService.fetchMovieTrends(currentPage);
 
-
+pagination.setTotalItems(1000);
 
 pagination.on('beforeMove', async evt => {
   apiService.page = evt.page;
+  
 
   list.innerHTML = '';
 
