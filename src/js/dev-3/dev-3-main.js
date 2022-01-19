@@ -81,7 +81,7 @@ function textModalBtn(id) {
       btnWatch.textContent = 'Remove from watched';
       btnWatch.classList.add('active');
     }
-    setTimeout(changeText, 500);
+    setTimeout(changeText, 300);
   } else {
     // console.log('нет такого в watched');
 
@@ -100,7 +100,7 @@ function textModalBtn(id) {
       btnQueue.textContent = 'Remove from queue';
       btnQueue.classList.add('active');
     }
-    setTimeout(changeText, 500);
+    setTimeout(changeText, 300);
   } else {
     // console.log('нет такого в queue');
 
@@ -113,13 +113,14 @@ function textModalBtn(id) {
 function addWatcheIdFilm(event) {
   const btnWatch = document.querySelector('.modal-details_watched-button');
   const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
+  const newList = JSON.parse(localStorage.getItem('newList'));
 
   if (btnWatch.classList.contains('active')) {
     removeWatcheId(filmId);
   } else {
     let watchList = [];
     watchList = JSON.parse(localStorage.getItem('watched'));
-    watchList.push(filmId);
+    watchList.push(newList);
     localStorage.setItem('watched', JSON.stringify(watchList));
     textModalBtn(filmId);
   }
@@ -128,13 +129,14 @@ function addWatcheIdFilm(event) {
 function addQueueIdFilm() {
   const btnQueue = document.querySelector('.modal-details_queue-button');
   const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
+  const newList = JSON.parse(localStorage.getItem('newList'));
 
   if (btnQueue.classList.contains('active')) {
     removeQueueId(filmId);
   } else {
     let queueList = [];
     queueList = JSON.parse(localStorage.getItem('queue'));
-    queueList.push(filmId);
+    queueList.push(newList);
     localStorage.setItem('queue', JSON.stringify(queueList));
     textModalBtn(filmId);
   }
@@ -148,10 +150,8 @@ function removeWatcheId() {
   const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
 
   if (localStorage.getItem('watched')) {
-    console.log('renove whith if', watchList.includes(filmId));
-
-    if (watchList.includes(filmId)) {
-      const filterNevArr = watchList.filter(el => el !== filmId);
+    if (inArrayKey(filmId, 'watched')) {
+      const filterNevArr = watchList.filter(el => el.id !== filmId);
       localStorage.removeItem('watched');
       localStorage.setItem('watched', JSON.stringify(filterNevArr));
     }
@@ -167,10 +167,8 @@ function removeQueueId() {
   const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
 
   if (localStorage.getItem('queue')) {
-    console.log('renove whith if', queueList.includes(filmId));
-
-    if (queueList.includes(filmId)) {
-      const filterNevArrQueue = queueList.filter(el => el !== filmId); //-удаляет со списка
+    if (inArrayKey(filmId, 'queue')) {
+      const filterNevArrQueue = queueList.filter(el => el.id !== filmId); //-удаляет со списка
       localStorage.removeItem('queue');
       localStorage.setItem('queue', JSON.stringify(filterNevArrQueue)); // ключ куда записывается
     }
@@ -178,14 +176,16 @@ function removeQueueId() {
   textModalBtn(filmId);
 }
 
-function inArrayKey(id, list) {
-  let arrList = [];
-  let localListJson = JSON.parse(localStorage.getItem(list));
-  if (localListJson) {
-    arrList = [...localListJson];
+function inArrayKey(id, key) {
+  let localListJson = JSON.parse(localStorage.getItem(key));
+  let obj = localListJson.find(el => el.id === id);
+  // const filtr = obj.includes(id);
+
+  if (!obj) {
+    return;
   }
-  const listSet = new Set(arrList);
-  return listSet.has(id);
+
+  return true;
 }
 
 export { renderModal, onOpenModalFilm };
