@@ -74,7 +74,7 @@ function textModalBtn(id) {
   if (inArrayKey(id, 'watched')) {
     // console.log('есть такой в watched');
 
-    btnWatch.textContent = 'Added to watched';
+    btnWatch.textContent = 'Add to watched';
     btnWatch.disabled = true;
     function changeText() {
       btnWatch.disabled = false;
@@ -93,7 +93,7 @@ function textModalBtn(id) {
   if (inArrayKey(id, 'queue')) {
     // console.log('есть такой в queue');
 
-    btnQueue.textContent = 'Added to queue';
+    btnQueue.textContent = 'Add to queue';
     btnQueue.disabled = true;
     function changeText() {
       btnQueue.disabled = false;
