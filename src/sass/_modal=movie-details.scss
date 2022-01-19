@@ -1,8 +1,8 @@
- //modal
- 
- .is-overflow{
-    overflow: hidden;
-  }
+//modal
+
+.is-overflow {
+  overflow: hidden;
+}
 
 .backdrop__film {
   position: fixed;
@@ -11,7 +11,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
- overflow: auto;
+  overflow: auto;
   opacity: 1;
 
   &.is-hidden {
@@ -19,7 +19,6 @@
     pointer-events: none;
   }
 }
-
 
 .modal__film {
   height: 80vh;
@@ -30,15 +29,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-//   @media screen and (min-width: 480px) {
-//     width: 450px;
-//   }
-//   @media screen and (min-width: 768px) {
-//     width: 600px;
-//   }
-//   @media screen and (min-width: 1280px) {
-//     width: 1000px;
-//   }
+  //   @media screen and (min-width: 480px) {
+  //     width: 450px;
+  //   }
+  //   @media screen and (min-width: 768px) {
+  //     width: 600px;
+  //   }
+  //   @media screen and (min-width: 1280px) {
+  //     width: 1000px;
+  //   }
 }
 .modal-close-button__film {
   position: absolute;
@@ -54,26 +53,37 @@
   top: 8px;
   right: 8px;
 
-//   &:hover svg,
-//   &:focus svg {
-//     fill: $soc-icon-hover;
-//   }
+  //   &:hover svg,
+  //   &:focus svg {
+  //     fill: $soc-icon-hover;
+  //   }
 }
 
-
-.modal-close-icon__film{
-    fill: #000;
+.modal-close-icon__film {
+  fill: #000;
 }
 
 //template
-.modal-details{
+.modal-details {
   display: flex;
 }
 
-.modal-details_btn-box{
+.modal-details_btn-box {
   display: flex;
 }
 
-modal-details_image-box{
-  
+modal-details_image-box {
+}
+.modal-details_watched-button:hover,
+.modal-details_watched-button:focus,
+.modal-details_queue-button:hover,
+.modal-details_queue-button:focus {
+  background: #ff6b01;
+  border-color: #ff6b01;
+}
+
+// для кнопок
+.active {
+  background-color: #ff6b01;
+  border: 0;
 }
