@@ -1,8 +1,8 @@
- //modal
- 
- .is-overflow{
-    overflow: hidden;
-  }
+//modal
+
+.is-overflow {
+  overflow: hidden;
+}
 
 .backdrop__film {
   position: fixed;
@@ -11,7 +11,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
- overflow: auto;
+  overflow: auto;
   opacity: 1;
 
   &.is-hidden {
@@ -19,7 +19,6 @@
     pointer-events: none;
   }
 }
-
 
 .modal__film {
     box-sizing: content-box;
@@ -29,33 +28,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  max-height: 100vh;
-  width: 280px;
-  padding: 48px 20px 41px 20px;
 
-  @media (min-width: 768px)  {
-    display: flex;
-    margin: auto;
-    width: 600px;
-    height: 562px;
-    padding: 42px 29px 40px 28px;
-  }
-  @media (min-width: 1024px)  {
-    display: flex;
-    width: 786px;
-    height: 568px;
-    padding: 50px 30px 40px 30px;
-  }
-
-//   @media screen and (min-width: 480px) {
-//     width: 450px;
-//   }
-//   @media screen and (min-width: 768px) {
-//     width: 600px;
-//   }
-//   @media screen and (min-width: 1280px) {
-//     width: 1000px;
-//   }
+  //   @media screen and (min-width: 480px) {
+  //     width: 450px;
+  //   }
+  //   @media screen and (min-width: 768px) {
+  //     width: 600px;
+  //   }
+  //   @media screen and (min-width: 1280px) {
+  //     width: 1000px;
+  //   }
 }
 .modal-close-button__film {
   box-sizing: content-box;
@@ -70,193 +52,48 @@
   border-radius: 50%;
   border-color: rgba(0, 0, 0, 0.6);
   background-color: inherit;
-  padding: 3px;
- 
-   transition: all 250ms ease-in;
-   &:hover,
-  &:focus {
-    background-color: #FF6B01;
-    color: #ffffff;
-    border: 1px solid #FF6B01;
-    transition: all 250ms ease-in;
-  }
-//   &:hover svg,
-//   &:focus svg {
-//     fill: $soc-icon-hover;
-//   }
+
+  
+  padding: 6px;
+  top: 8px;
+  right: 8px;
+
+  //   &:hover svg,
+  //   &:focus svg {
+  //     fill: $soc-icon-hover;
+  //   }
 }
 
-
-// .modal-close-icon__film{
-//  position: absolute;
-//    top: 5px;
-//   right: 5px;
-// }
+.modal-close-icon__film {
+  fill: #000;
+}
 
 //template
-.modal-details{
-   @media  (min-width: 768px) {
-   display: flex;
-  }
-  @media (min-width: 1024px) {
-   display: flex;
-  }
-}
-
-// .modal-details_btn-box{
-//   display: flex;
-// }
-
-.modal-details_image{
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-
-  max-width: 280px;
-  height: 356px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-      transform: scale(1);
-    transition-duration: .3s;
-  @media (max-width: 768px) {
-    max-width: 264px;
-    height: 373px;
-  }
-  @media (min-width: 1024px) {
-    max-width: 376px;
-    height: 477.8px;
-  }
-  &:hover,
-  &:focus{
-        transform: scale(1.1);
-    transition-duration: .3s;
-    box-shadow: (4px 4px 10px   #FF6B01);
-      opacity: 0.9;
-  }
-}
-
-.modal-details_image-box {
-
-  @media (min-width: 768px) {
-    margin-right: 30px;
-   
-}
-.movie-details-data {
-  text-align: start;
-   width: 40vw;
-  }
-}
-
-.movie-details-data_title{
-  font-size: 20px;
-  line-height: 1.15;
-  margin-bottom: 12px;
-  @media screen and (min-width: 1024px) {
-    font-size: 30px;
-    line-height: 1.17;
-   
-  }
-}
-
-.movie-details-data-left{
-  
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.1;
-color: #8C8C8C;
- @media  (min-width: 768px){
-   font-size: 12px;
- }
+.modal-details {
+  display: flex;
 
 }
 
-.movie-details-data-right{
- padding: 4px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.1;
-align-items: center;
-color: #000000;
- @media(min-width: 768px){
-   font-size: 12px;
-    padding: 8px;
- }
-}
-
-.movie-details-accent{
- padding: 1px 7px 1px 7px;
-  background-color: #FF6B01;
-  border-radius: 5px;
-}
-
-.movie-details-data_description-title{
-  margin-top: 16px;
-  margin-bottom: 10px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.2px;
-display: flex;
-align-items: center;
-text-transform: uppercase;
-color: #000000;
- @media (min-width: 768px){
-   font-size: 14px;
-    margin-top: 22px;
-  margin-bottom: 12px;
- }
-}
-
-.movie-details-data_description{
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.2;
-color: #000000;
- @media (min-width: 768px) {
-    line-height: 1.6;
-    font-size: 14px;
-  }
-
-}
-
-.modal-details_btn-box{
+.modal-details_btn-box {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 22px;
 }
 
-.modal-details_btn {
-  width: 112px;
-  height: 44px;
-  text-align: center;
-  text-transform: uppercase;
-  border-radius: 5px;
-  background-color:#ffffff;
-  cursor: pointer;
-  border: 1px solid #000000;
-  color: #000;
-  transition: all 250ms ease-in;
-  font-family: Roboto;
-  font-weight: 500;
-  &:hover,
-  &:focus {
-    background-color: #FF6B01;
-    color: #ffffff;
-    border: 1px solid #FF6B01;
-    transition: all 250ms ease-in;
-  }
-  @media  (min-width: 768px) {
-    width: 125px;
-  }
-  @media (min-width: 1024px) {
-    width: 136px;
-  }
+modal-details_image-box {
 }
+.modal-details_watched-button:hover,
+.modal-details_watched-button:focus,
+.modal-details_queue-button:hover,
+.modal-details_queue-button:focus {
+  background: #ff6b01;
+  border-color: #ff6b01;
+}
+
+// для кнопок
+.active {
+  background-color: #ff6b01;
+  border: 0;
+}
+
