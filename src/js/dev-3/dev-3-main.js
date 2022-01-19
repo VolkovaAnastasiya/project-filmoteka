@@ -22,11 +22,8 @@ function onOpenModalFilm(event) {
   localStorage.setItem('filmId', JSON.stringify(filmId));
 
   const filmItem = JSON.parse(localStorage.getItem('filmInfo'));
-  const filmItemSearch = JSON.parse(localStorage.getItem('searchResults'));
 
-  const newList =
-    filmItem.find(elem => elem.id === Number(filmId)) ||
-    filmItemSearch.find(elem => elem.id === Number(filmId));
+  const newList = filmItem.find(elem => elem.id === Number(filmId));
 
   localStorage.setItem('newList', JSON.stringify(newList));
   renderModal(newList);
@@ -76,6 +73,7 @@ function textModalBtn(id) {
   const btnQueue = document.querySelector('.modal-details_queue-button');
   if (inArrayKey(id, 'watched')) {
     // console.log('есть такой в watched');
+
     btnWatch.textContent = 'Added to watched';
     btnWatch.disabled = true;
     function changeText() {
@@ -83,9 +81,10 @@ function textModalBtn(id) {
       btnWatch.textContent = 'Remove from watched';
       btnWatch.classList.add('active');
     }
-    setTimeout(changeText, 1000);
+    setTimeout(changeText, 500);
   } else {
     // console.log('нет такого в watched');
+
     btnWatch.textContent = 'Add to watched';
     btnWatch.classList.remove('active');
     btnWatch.disabled = false;
@@ -93,6 +92,7 @@ function textModalBtn(id) {
 
   if (inArrayKey(id, 'queue')) {
     // console.log('есть такой в queue');
+
     btnQueue.textContent = 'Added to queue';
     btnQueue.disabled = true;
     function changeText() {
@@ -100,9 +100,10 @@ function textModalBtn(id) {
       btnQueue.textContent = 'Remove from queue';
       btnQueue.classList.add('active');
     }
-    setTimeout(changeText, 1000);
+    setTimeout(changeText, 500);
   } else {
     // console.log('нет такого в queue');
+
     btnQueue.textContent = 'Add to queue';
     btnQueue.classList.remove('active');
     btnQueue.disabled = false;
@@ -112,47 +113,35 @@ function textModalBtn(id) {
 function addWatcheIdFilm(event) {
   const btnWatch = document.querySelector('.modal-details_watched-button');
   const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
-  console.log('add');
 
-  let watchList = [];
   if (btnWatch.classList.contains('active')) {
     removeWatcheId(filmId);
   } else {
+    let watchList = [];
     watchList = JSON.parse(localStorage.getItem('watched'));
     watchList.push(filmId);
     localStorage.setItem('watched', JSON.stringify(watchList));
+    textModalBtn(filmId);
   }
-
-  btnWatch.classList.remove('active');
-  btnWatch.removeEventListener('click', addWatcheIdFilm);
-  btnWatch.addEventListener('click', removeWatcheId);
-
-  textModalBtn(filmId);
 }
 
 function addQueueIdFilm() {
-  const btnQueue = document.querySelector('.modal-details_watched-button');
+  const btnQueue = document.querySelector('.modal-details_queue-button');
   const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
-  let queueList = [];
 
   if (btnQueue.classList.contains('active')) {
     removeQueueId(filmId);
   } else {
+    let queueList = [];
     queueList = JSON.parse(localStorage.getItem('queue'));
     queueList.push(filmId);
     localStorage.setItem('queue', JSON.stringify(queueList));
+    textModalBtn(filmId);
   }
-
-  btnQueue.classList.remove('active');
-  btnQueue.removeEventListener('click', addQueueIdFilm);
-  btnQueue.addEventListener('click', removeQueueId);
-
-  textModalBtn(filmId);
 }
 
-function removeWatcheId(id) {
-  const btnWatch = document.querySelector('.modal-details_watched-button');
-  console.log('remove');
+function removeWatcheId() {
+  const btnWatch = document.querySelector('.modal-details_queue-button');
 
   let watchList = [];
   watchList = JSON.parse(localStorage.getItem('watched'));
@@ -162,17 +151,16 @@ function removeWatcheId(id) {
     console.log('renove whith if', watchList.includes(filmId));
 
     if (watchList.includes(filmId)) {
-      const filterNevArr = watchList.filter(el => el !== filmId); //-удаляет со списка
+      const filterNevArr = watchList.filter(el => el !== filmId);
       localStorage.removeItem('watched');
-      localStorage.setItem('watched', JSON.stringify(filterNevArr)); // ключ куда записывается
+      localStorage.setItem('watched', JSON.stringify(filterNevArr));
     }
   }
   textModalBtn(filmId);
 }
 
-function removeQueueId(id) {
+function removeQueueId() {
   const btnQueue = document.querySelector('.modal-details_watched-button');
-  console.log('remove');
 
   let queueList = [];
   queueList = JSON.parse(localStorage.getItem('queue'));
@@ -182,9 +170,9 @@ function removeQueueId(id) {
     console.log('renove whith if', queueList.includes(filmId));
 
     if (queueList.includes(filmId)) {
-      const filterNevArr = queueList.filter(el => el !== filmId); //-удаляет со списка
+      const filterNevArrQueue = queueList.filter(el => el !== filmId); //-удаляет со списка
       localStorage.removeItem('queue');
-      localStorage.setItem('queue', JSON.stringify(filterNevArr)); // ключ куда записывается
+      localStorage.setItem('queue', JSON.stringify(filterNevArrQueue)); // ключ куда записывается
     }
   }
   textModalBtn(filmId);
@@ -201,15 +189,3 @@ function inArrayKey(id, list) {
 }
 
 export { renderModal, onOpenModalFilm };
-
-// function renderModalSearch(data) {
-// //  console.log(data);
-
-//   const filmItemSearch = JSON.parse(localStorage.getItem("searchResults"));
-//   const markup = movieModalTpl(data);
-//   boxFilm.innerHTML = markup;
-
-//   // const currentFilm = data;
-//   console.log(apiService.data)
-
-// }
