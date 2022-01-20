@@ -7,7 +7,12 @@
     {{/if}}
     <p class="movie-card__title">{{title}}</p>
 <div class="movie-card__text">
-   {{#each genre_name}} <p class="movie-card__genre">{{this}}</p> {{/each}}
+    <ul class="movie-card__genre">
+        {{#each genre_name}}
+        <li class="genre__element">{{this}}</li>
+        {{/each}}
+        </ul> 
+        <span>|</span>
     <p class="movie-card__year">{{release_date}}</p>
     </div>
 </li>
