@@ -7,7 +7,7 @@ export default class ApiService {
     this.page = 1;
     this.API_KEY = '90cb713cbad21b579532fb5c59ca1f23';
     this.BASE_URL = `https://api.themoviedb.org/3`;
-      
+    
   }
   // Запрос популярных фильмов
   async fetchMovieTrends() {
@@ -20,8 +20,7 @@ export default class ApiService {
 localStorage.setItem("filmInfo", JSON.stringify(data.results));
 
           console.log(data);
-          const item = data.total_pages;
-          console.log(item);
+          this.total_pages = data.total_pages;
               this.incrementPage();
               return data.results;
           });
