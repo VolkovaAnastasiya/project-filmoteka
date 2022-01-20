@@ -30,12 +30,13 @@
           <tr>
             <td class="movie-details-data-left">Genre</td>
            
-            <td class="movie-details-data-right">  {{#if genres}}
-                        {{#each genres}}
-                        <span>{{this.name}}{{#unless @last}},{{/unless}}</span>
+            <td class="movie-details-data-right">
+               {{!-- {{#if genres}} --}}
+                        {{#each genre_ids}}
+                        <span>{{this}}</span>
                         {{/each}}
-                        {{else}}<span>N/A</span>
-                        {{/if}}</td>
+                        {{!-- {{else}}<span>N/A</span>
+                        {{/if}}</td> --}}
           </tr>
         </table>
         <p class="movie-details-data_description-title">ABOUT</p>
@@ -43,8 +44,10 @@
        {{overview}}
         </p>
         <div class="modal-details_btn-box">
-      <button class="modal-details_watched-button modal-details_btn"><span>ADD TO</span> WATCHED</button>
-      <button class="modal-details_queue-button modal-details_btn"><span>ADD TO</span> QUEUE</button>
+
+      <button class="modal-details_btn modal-details_watched-button " data-id="{{id}}"><span>ADD TO</span> WATCHED</button>
+      <button class="modal-details_btn modal-details_queue-button " data-id="{{id}}"><span>ADD TO</span> QUEUE</button>
+
         </div>
       
       </div>

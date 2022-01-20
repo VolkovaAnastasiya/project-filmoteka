@@ -1,8 +1,8 @@
- //modal
- 
- .is-overflow{
-    overflow: hidden;
-  }
+//modal
+
+.is-overflow {
+  overflow: hidden;
+}
 
 .backdrop__film {
   position: fixed;
@@ -11,7 +11,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
- overflow: auto;
+  overflow: auto;
   opacity: 1;
 
   &.is-hidden {
@@ -20,9 +20,8 @@
   }
 }
 
-
 .modal__film {
-    box-sizing: content-box;
+  box-sizing: content-box;
   background-color: #fff;
   position: absolute;
   top: 50%;
@@ -33,77 +32,80 @@
   width: 280px;
   padding: 48px 20px 41px 20px;
 
-  @media (min-width: 768px)  {
+  @media (min-width: 768px) {
     display: flex;
     margin: auto;
     width: 600px;
     height: 562px;
     padding: 42px 29px 40px 28px;
   }
-  @media (min-width: 1024px)  {
+  @media (min-width: 1024px) {
     display: flex;
     width: 786px;
     height: 568px;
     padding: 50px 30px 40px 30px;
   }
 
-//   @media screen and (min-width: 480px) {
-//     width: 450px;
-//   }
-//   @media screen and (min-width: 768px) {
-//     width: 600px;
-//   }
-//   @media screen and (min-width: 1280px) {
-//     width: 1000px;
-//   }
+  //   @media screen and (min-width: 480px) {
+  //     width: 450px;
+  //   }
+  //   @media screen and (min-width: 768px) {
+  //     width: 600px;
+  //   }
+  //   @media screen and (min-width: 1280px) {
+  //     width: 1000px;
+  //   }
 }
 .modal-close-button__film {
+  box-sizing: content-box;
   position: absolute;
+  top: 8px;
+  right: 8px;
   cursor: pointer;
   width: 30px;
   height: 30px;
-  display: flex;
+  text-align: center;
   align-items: center;
   border-radius: 50%;
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.6);
   background-color: inherit;
-  // padding: 6px;
-  top: 8px;
-  right: 8px;
-   transition: all 250ms ease-in;
-   &:hover,
+  padding: 3px;
+
+  transition: all 250ms ease-in;
+  &:hover,
   &:focus {
-    background-color: #FF6B01;
+    background-color: #ff6b01;
     color: #ffffff;
-    border: 1px solid #FF6B01;
+    border: 1px solid #ff6b01;
     transition: all 250ms ease-in;
   }
-//   &:hover svg,
-//   &:focus svg {
-//     fill: $soc-icon-hover;
-//   }
+  //   &:hover svg,
+  //   &:focus svg {
+  //     fill: $soc-icon-hover;
+  //   }
 }
 
-
-.modal-close-icon__film{
-    fill: #000;
-}
+// .modal-close-icon__film{
+//  position: absolute;
+//    top: 5px;
+//   right: 5px;
+// }
 
 //template
-.modal-details{
-   @media  (min-width: 768px) {
-   display: flex;
+.modal-details {
+  @media (min-width: 768px) {
+    display: flex;
   }
   @media (min-width: 1024px) {
-   display: flex;
+    display: flex;
   }
 }
 
-.modal-details_btn-box{
-  display: flex;
-}
+// .modal-details_btn-box{
+//   display: flex;
+// }
 
-.modal-details_image{
+.modal-details_image {
   margin-right: auto;
   margin-left: auto;
   display: block;
@@ -112,6 +114,8 @@
   height: 356px;
   border-radius: 5px;
   margin-bottom: 20px;
+  transform: scale(1);
+  transition-duration: 0.3s;
   @media (max-width: 768px) {
     max-width: 264px;
     height: 373px;
@@ -120,100 +124,101 @@
     max-width: 376px;
     height: 477.8px;
   }
-}
-
-.modal-details_image-box {
-
-  @media (min-width: 768px) {
-    margin-right: 30px;
-   
-}
-.movie-details-data {
-  text-align: start;
-   width: 40vw;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+    box-shadow: (4px 4px 10px #ff6b01);
+    opacity: 0.9;
   }
 }
 
-.movie-details-data_title{
+.modal-details_image-box {
+  @media (min-width: 768px) {
+    margin-right: 30px;
+  }
+  .movie-details-data {
+    text-align: start;
+    width: 40vw;
+  }
+}
+
+.movie-details-data_title {
   font-size: 20px;
   line-height: 1.15;
   margin-bottom: 12px;
   @media screen and (min-width: 1024px) {
     font-size: 30px;
     line-height: 1.17;
-   
   }
 }
 
-.movie-details-data-left{
-  
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.1;
-color: #8C8C8C;
- @media  (min-width: 768px){
-   font-size: 12px;
- }
-
+.movie-details-data-left {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.1;
+  color: #8c8c8c;
+  @media (min-width: 768px) {
+    font-size: 12px;
+  }
 }
 
-.movie-details-data-right{
- padding: 4px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.1;
-align-items: center;
-color: #000000;
- @media(min-width: 768px){
-   font-size: 12px;
+.movie-details-data-right {
+  padding: 4px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.1;
+  align-items: center;
+  color: #000000;
+  @media (min-width: 768px) {
+    font-size: 12px;
     padding: 8px;
- }
+  }
 }
 
-.movie-details-accent{
- padding: 1px 7px 1px 7px;
-  background-color: #FF6B01;
+.movie-details-accent {
+  padding: 1px 7px 1px 7px;
+  background-color: #ff6b01;
   border-radius: 5px;
 }
 
-.movie-details-data_description-title{
+.movie-details-data_description-title {
   margin-top: 16px;
   margin-bottom: 10px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.2px;
-display: flex;
-align-items: center;
-text-transform: uppercase;
-color: #000000;
- @media (min-width: 768px){
-   font-size: 14px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #000000;
+  @media (min-width: 768px) {
+    font-size: 14px;
     margin-top: 22px;
-  margin-bottom: 12px;
- }
+    margin-bottom: 12px;
+  }
 }
 
-.movie-details-data_description{
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 10px;
-line-height: 1.2;
-color: #000000;
- @media (min-width: 768px) {
+.movie-details-data_description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #000000;
+  @media (min-width: 768px) {
     line-height: 1.6;
     font-size: 14px;
   }
-
 }
 
-.modal-details_btn-box{
+.modal-details_btn-box {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -226,19 +231,21 @@ color: #000000;
   text-align: center;
   text-transform: uppercase;
   border-radius: 5px;
-  background-color:#ffffff;
+  background-color: #ffffff;
   cursor: pointer;
   border: 1px solid #000000;
   color: #000;
   transition: all 250ms ease-in;
+  font-family: Roboto;
+  font-weight: 500;
   &:hover,
   &:focus {
-    background-color: #FF6B01;
+    background-color: #ff6b01;
     color: #ffffff;
-    border: 1px solid #FF6B01;
+    border: 1px solid #ff6b01;
     transition: all 250ms ease-in;
   }
-  @media  (min-width: 768px) {
+  @media (min-width: 768px) {
     width: 125px;
   }
   @media (min-width: 1024px) {

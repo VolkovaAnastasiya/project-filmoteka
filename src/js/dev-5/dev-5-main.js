@@ -1,32 +1,63 @@
 console.log(`5`);
-import { Spinner } from 'spin.js';
-import 'spin.js/spin.css';
 
-const opts = {
-  lines: 11, // The number of lines to draw
-  length: 35, // The length of each line
-  width: 14, // The line thickness
-  radius: 46, // The radius of the inner circle
-  scale: 1.45, // Scales overall size of the spinner
-  corners: 1, // Corner roundness (0..1)
-  speed: 0.8, // Rounds per second
-  rotate: 35, // The rotation offset
-  animation: 'spinner-line-fade-more', // The CSS animation name for the lines
-  direction: 1, // 1: clockwise, -1: counterclockwise
-  color: '#ffffff', // CSS color or array of colors
-  fadeColor: '#df9e43', // CSS color or array of colors
-  top: '36%', // Top position relative to parent
-  left: '50%', // Left position relative to parent
-  shadow: '0 0 2px black', // Box-shadow for the lines
-  zIndex: 2000000000, // The z-index (defaults to 2e9)
-  className: 'spinner', // The CSS class to assign to the spinner
-  position: 'absolute', // Element positioning
+import ApiService from '../dev-1/api.js';
+import { renderTrends, renderLibrary } from '../dev-1/renders';
+import movieTpl from '../../templates/film-card-library.hbs';
+import { idToGenre } from '../dev-2/dev-2-main';
+import pagination from '../dev-1/pagination';
+
+////////////////// Когда жмешь на кнопку Home, то рисуется галлерея
+
+const apiService = new ApiService();
+
+const homeBtn = document.querySelector('.btn-home-js');
+
+homeBtn.addEventListener('click', onHomeBtnClick);
+
+function onHomeBtnClick(e) {
+  e.preventDefault();
+  apiService.resetPage();
+  pagination.reset();
+  apiService.fetchMovieTrends().then(idToGenre).then(renderTrends);
+}
+
+/////////////////////////////////// MyLibrary
+
+const refs = {
+  watched: document.querySelector('.btn-watched-js'),
+  queue: document.querySelector('.btn-queue-js'),
+  libraryBtn: document.querySelector('.btn-myLibrary-js'),
+  gallery: document.querySelector('.cards-gallery__list'),
 };
 
-// import { Spinner } from 'spin.js';
-// import opts from '../dev-5/dev-5-main';
-// const target = document.getElementById('spinner');
-// const spinner = new Spinner(opts).spin(target);
-// spinner.spin(false)
+refs.libraryBtn.addEventListener('click', onClickLibraryBtn);
 
-export default opts;
+function onClickLibraryBtn(e) {
+  e.preventDefault();
+  apiService.resetPage();
+  pagination.reset();
+  // refs.watched.classList.add('active');
+  // apiService.fetchMovieTrends().then(renderLibrary);
+  moviesLibraryMarkup();
+}
+
+// const watched = JSON.parse(localStorage.getItem('watched'));
+// const queue = JSON.parse(localStorage.getItem('queue'));
+
+const WATCHED = 'WATCHED';
+const QUEUE = 'QUEUE';
+
+let buttonClick = null;
+
+function moviesLibraryMarkup(localStorageMovies) {
+  if (!localStorageMovies) {
+    clearFilmsGallery();
+    const message =
+      '<div class = "gallery-warning"><p>Sorry, you have not added any movies to the list. Return to the <a class = "gallery-warning__span" href="./index.html">HOME</a> </p><div>';
+    refs.gallery.insertAdjacentHTML('beforeend', message);
+  }
+}
+
+function clearFilmsGallery() {
+  refs.gallery.innerHTML = '';
+}
