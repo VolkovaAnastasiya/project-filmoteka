@@ -25,18 +25,18 @@ import './dev-1/pagination.js';
 
 test();
 function test() {
-  if (localStorage.getItem('watched')) {
+  if (get('watched')) {
     return;
   }
 
-  localStorage.setItem('watched', JSON.stringify([]));
+  save('watched', []);
 }
 
 testQue();
 function testQue() {
-  if (localStorage.getItem('queue')) {
+  if (get('queue')) {
     return;
   }
 
-  localStorage.setItem('queue', JSON.stringify([]));
+  save('queue', []);
 }
