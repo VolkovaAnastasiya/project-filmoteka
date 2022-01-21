@@ -6,6 +6,8 @@ const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
 
+
+searchForm.addEventListener('change', onFormSubmit);
 searchForm.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(evt) {
@@ -29,26 +31,16 @@ function renderSearch(currentPage) {
     }
     else {
         gallery.innerHTML = '';
-        apiService.fetchMovieTrends().then(idToGenre).then(renderTrends)
+        apiService.fetchMovieTrends().then(idToGenre).then(genreData)
        
     }
 
 }
-function renderSearchedFilms(data) {
-  console.log(data);
-  if (data.length === 0) {
-    gallery.innerHTML = 'SORRY WE CANT FIND ANY MOVIE WITH THIS NAME';
-  } else {
-    let filmArray = [];
-    for (let film of data) {
-      if (film.genre_name !== undefined && film.genre_name.length >= 3) {
-        film.genre_name.splice(2, film.genre_name.length, 'Other');
-      }
-      if (film.release_date !== undefined) {
-        film.release_date = film.release_date.slice(0, 4);
-      }
 
-      filmArray.push(film);
+function renderSearchedFilms(data) {  
+    if (data.length === 0) {
+        gallery.innerHTML = "SORRY WE CANT FIND ANY MOVIE WITH THIS NAME";
+
     }
     else {
             genreData(data)
@@ -63,10 +55,17 @@ function genreData(data) {
                    
             if (film.genre_name !== undefined && film.genre_name.length >= 3) {
                        film.genre_name.splice(2, film.genre_name.length, 'Other')
-                   }
-                  if (film.release_date !== undefined) {
+            }
+            else if (film.genre_name === undefined){
+                film.genre_name=['Other']
+            }
+                  if (film.release_date !== '') {
                       film.release_date = film.release_date.slice(0, 4);
-                    }
+            }
+                  else{
+                      console.log('Yes')
+                      film.release_date = 'No information';
+            }
                    
                    filmArray.push(film);
                }
