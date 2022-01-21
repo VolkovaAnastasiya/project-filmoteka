@@ -49,13 +49,6 @@ function genreData(data) {
         
            let filmArray = [];
         for (let film of data) {
-                   
-            if (film.genre_name !== undefined && film.genre_name.length >= 3) {
-                       film.genre_name.splice(2, film.genre_name.length, 'Other')
-            }
-            else if (film.genre_name === undefined){
-                film.genre_name=['Other']
-            }
                   if (film.release_date !== '') {
                       film.release_date = film.release_date.slice(0, 4);
             }
