@@ -19,13 +19,13 @@ function onOpenModalFilm(event) {
     return;
   }
   const filmId = event.target.parentNode.id;
-  localStorage.setItem('filmId', JSON.stringify(filmId));
+  save('filmId', filmId);
 
-  const filmItem = JSON.parse(localStorage.getItem('filmInfo'));
+  const filmItem = get('filmInfo');
 
   const newList = filmItem.find(elem => elem.id === Number(filmId));
 
-  localStorage.setItem('newList', JSON.stringify(newList));
+  save('newList', newList);
   renderModal(newList);
 
   document.querySelector('body').classList.add('is-overflow');
@@ -112,32 +112,32 @@ function textModalBtn(id) {
 
 function addWatcheIdFilm(event) {
   const btnWatch = document.querySelector('.modal-details_watched-button');
-  const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
-  const newList = JSON.parse(localStorage.getItem('newList'));
+  const filmId = Number(get('filmId'));
+  const newList = get('newList');
 
   if (btnWatch.classList.contains('active')) {
     removeWatcheId(filmId);
   } else {
     let watchList = [];
-    watchList = JSON.parse(localStorage.getItem('watched'));
+    watchList = get('watched');
     watchList.push(newList);
-    localStorage.setItem('watched', JSON.stringify(watchList));
+    save('watched', watchList);
     textModalBtn(filmId);
   }
 }
 
 function addQueueIdFilm() {
   const btnQueue = document.querySelector('.modal-details_queue-button');
-  const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
-  const newList = JSON.parse(localStorage.getItem('newList'));
+  const filmId = Number(get('filmId'));
+  const newList = get('newList');
 
   if (btnQueue.classList.contains('active')) {
     removeQueueId(filmId);
   } else {
     let queueList = [];
-    queueList = JSON.parse(localStorage.getItem('queue'));
+    queueList = get('queue');
     queueList.push(newList);
-    localStorage.setItem('queue', JSON.stringify(queueList));
+    save('queue', queueList);
     textModalBtn(filmId);
   }
 }
@@ -146,14 +146,14 @@ function removeWatcheId() {
   const btnWatch = document.querySelector('.modal-details_queue-button');
 
   let watchList = [];
-  watchList = JSON.parse(localStorage.getItem('watched'));
-  const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
+  watchList = get('watched');
+  const filmId = Number(get('filmId'));
 
-  if (localStorage.getItem('watched')) {
+  if (get('watched')) {
     if (inArrayKey(filmId, 'watched')) {
       const filterNevArr = watchList.filter(el => el.id !== filmId);
-      localStorage.removeItem('watched');
-      localStorage.setItem('watched', JSON.stringify(filterNevArr));
+      remove('watched');
+      save('watched', filterNevArr);
     }
   }
   textModalBtn(filmId);
@@ -163,14 +163,14 @@ function removeQueueId() {
   const btnQueue = document.querySelector('.modal-details_watched-button');
 
   let queueList = [];
-  queueList = JSON.parse(localStorage.getItem('queue'));
-  const filmId = Number(JSON.parse(localStorage.getItem('filmId')));
+  queueList = get('queue');
+  const filmId = Number(get('filmId'));
 
-  if (localStorage.getItem('queue')) {
+  if (get('queue')) {
     if (inArrayKey(filmId, 'queue')) {
       const filterNevArrQueue = queueList.filter(el => el.id !== filmId); //-удаляет со списка
-      localStorage.removeItem('queue');
-      localStorage.setItem('queue', JSON.stringify(filterNevArrQueue)); // ключ куда записывается
+      remove('queue');
+      save('queue', filterNevArrQueue); // ключ куда записывается
     }
   }
   textModalBtn(filmId);
@@ -188,4 +188,47 @@ function inArrayKey(id, key) {
   return true;
 }
 
-export { renderModal, onOpenModalFilm };
+// Проверяет есть ли сохраненный ключ
+function test() {
+  if (get('watched')) {
+    return;
+  } else {
+    save('watched', []);
+  }
+  if (get('queue')) {
+    return;
+  } else {
+    save('queue', []);
+  }
+}
+
+// Принимает ключ `key` и значение `value`.
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (err) {
+    console.error('Set state error: ', err);
+  }
+};
+
+const get = key => {
+  try {
+    let serializedState = localStorage.getItem(key);
+
+    return (serializedState = JSON.parse(serializedState) || undefined);
+  } catch (err) {
+    console.error('Get state error: ', err);
+  }
+};
+
+// Принимает ключ `key`
+const remove = key => {
+  try {
+    localStorage.removeItem(key);
+  } catch (err) {
+    console.error('Remove state error: ', err);
+  }
+};
+
+export { renderModal, onOpenModalFilm, test, remove, save, get };
