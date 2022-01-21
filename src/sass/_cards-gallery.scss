@@ -79,6 +79,7 @@
 }
 
 .movie-card__text {
+  display: flex;
   margin-top: 5px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -88,11 +89,14 @@
 }
 
 .movie-card__genre {
-  //
+  display: flex;
+}
+.genre__element {
+  margin-right: 5px;
 }
 
 .movie-card__year {
-  //
+  margin-left: 5px;
 }
 
 .movie-card__rating {

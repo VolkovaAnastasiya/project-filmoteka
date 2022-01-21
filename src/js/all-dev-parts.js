@@ -10,7 +10,7 @@ import './dev-5/spinner.js';
 import ApiService from './dev-1/api.js';
 import { renderTrends, renderLibrary } from './dev-1/renders.js';
 import { renderModal } from './dev-3/dev-3-main.js';
-import { renderSearch, idToGenre } from './dev-2/dev-2-main.js';
+import { renderSearch, idToGenre, genreData } from './dev-2/dev-2-main.js';
 
 const apiService = new ApiService();
 apiService.fetchMovieGenre().then(saveGenreList);

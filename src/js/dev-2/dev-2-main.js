@@ -31,7 +31,7 @@ function renderSearch(currentPage) {
     else {
         gallery.innerHTML = '';
         apiService.fetchMovieTrends().then(idToGenre).then(renderTrends)
-        console.log('ytn htp', searchFieldValue)
+       
     }
 }
 function renderSearchedFilms(data) {  
@@ -40,7 +40,14 @@ function renderSearchedFilms(data) {
         gallery.innerHTML = "SORRY WE CANT FIND ANY MOVIE WITH THIS NAME";
     }
     else {
-        let filmArray = [];
+            genreData(data)
+}
+    
+    
+}
+function genreData(data) {
+        
+           let filmArray = [];
         for (let film of data) {
                    
             if (film.genre_name !== undefined && film.genre_name.length >= 3) {
@@ -55,9 +62,7 @@ function renderSearchedFilms(data) {
                const markup = movieTpl(filmArray);
                    gallery.innerHTML = markup; 
            }
-            
-}
-    
+   
 function idToGenre(film_list) {
     
 changeToName(JSON.parse(localStorage.getItem('genreList')), film_list)
@@ -86,4 +91,4 @@ changeToName(JSON.parse(localStorage.getItem('genreList')), film_list)
     return film_list;
 }
 
-export { renderSearch, idToGenre }
+export { renderSearch, idToGenre , genreData}
