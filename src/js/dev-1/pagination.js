@@ -1,6 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { renderSearch } from '../dev-2/dev-2-main.js';
+import { idToGenre, renderSearch } from '../dev-2/dev-2-main.js';
+import { genreData } from '../dev-2/dev-2-main.js';
 
 import ApiService from './api.js'
 import { renderTrends } from './renders.js';
@@ -60,7 +61,7 @@ pagination.on('beforeMove', async evt => {
     options.page = apiService.page;
       console.log(options.page)
     // Меняет currentPage, на страницу из апи
-    apiService.fetchMovieTrends(options.page).then(renderTrends);
+    apiService.fetchMovieTrends(options.page).then(idToGenre).then(genreData);
     // apiService.fetchMovieTrends().then(renderTrends);
     
   }

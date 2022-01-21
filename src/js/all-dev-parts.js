@@ -19,7 +19,7 @@ function saveGenreList(list) {
   localStorage.setItem('genreList', JSON.stringify(list));
 }
 
-apiService.fetchMovieTrends().then(idToGenre).then(renderTrends);
+apiService.fetchMovieTrends().then(idToGenre).then(genreData);
 
 import './dev-1/pagination.js';
 
