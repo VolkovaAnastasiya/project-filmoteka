@@ -81,7 +81,7 @@ function textModalBtn(id) {
       btnWatch.textContent = 'Remove from watched';
       btnWatch.classList.add('active');
     }
-    setTimeout(changeText, 300);
+    changeText();
   } else {
     // console.log('нет такого в watched');
 
@@ -100,7 +100,7 @@ function textModalBtn(id) {
       btnQueue.textContent = 'Remove from queue';
       btnQueue.classList.add('active');
     }
-    setTimeout(changeText, 300);
+    changeText();
   } else {
     // console.log('нет такого в queue');
 

@@ -23,5 +23,22 @@ apiService.fetchMovieTrends().then(idToGenre).then(renderTrends);
 
 import './dev-1/pagination.js';
 
-localStorage.setItem('watched', JSON.stringify([]));
-localStorage.setItem('queue', JSON.stringify([]));
+test();
+function test() {
+  if (localStorage.getItem('watched')) {
+    return;
+  }
+
+  localStorage.setItem('watched', JSON.stringify([]));
+ 
+}
+
+testQue();
+function testQue() {
+  if (localStorage.getItem('queue')) {
+    return;
+  }
+
+  localStorage.setItem('queue', JSON.stringify([]));
+  
+}
