@@ -188,6 +188,20 @@ function inArrayKey(id, key) {
   return true;
 }
 
+// Проверяет есть ли сохраненный ключ
+function test() {
+  if (get('watched')) {
+    return;
+  } else {
+    save('watched', []);
+  }
+  if (get('queue')) {
+    return;
+  } else {
+    save('queue', []);
+  }
+}
+
 // Принимает ключ `key` и значение `value`.
 const save = (key, value) => {
   try {
@@ -217,4 +231,4 @@ const remove = key => {
   }
 };
 
-export { renderModal, onOpenModalFilm, remove, save, get };
+export { renderModal, onOpenModalFilm, test, remove, save, get };

@@ -9,7 +9,7 @@ import './dev-5/spinner.js';
 
 import ApiService from './dev-1/api.js';
 import { renderTrends, renderLibrary } from './dev-1/renders.js';
-import { renderModal, remove, save, get } from './dev-3/dev-3-main.js';
+import { renderModal, remove, save, test, get } from './dev-3/dev-3-main.js';
 import { renderSearch, idToGenre, genreData } from './dev-2/dev-2-main.js';
 
 const apiService = new ApiService();
@@ -24,19 +24,3 @@ apiService.fetchMovieTrends().then(idToGenre).then(genreData);
 import './dev-1/pagination.js';
 
 test();
-function test() {
-  if (get('watched')) {
-    return;
-  }
-
-  save('watched', []);
-}
-
-testQue();
-function testQue() {
-  if (get('queue')) {
-    return;
-  }
-
-  save('queue', []);
-}
