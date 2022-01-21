@@ -49,11 +49,10 @@ function genreData(data) {
         
            let filmArray = [];
         for (let film of data) {
-                  if (film.release_date !== '') {
+                  if (film.release_date !== '' && film.release_date !== undefined) {
                       film.release_date = film.release_date.slice(0, 4);
             }
                   else{
-                      console.log('Yes')
                       film.release_date = 'No information';
             }
                    
