@@ -16,21 +16,23 @@ function onFormSubmit(evt) {
 }
 
 function renderSearch(currentPage) {
-  const searchFieldValue = document.querySelector('.search-form_input').value;
 
-  if (currentPage) {
-    apiService.page = currentPage;
-  }
+    const searchFieldValue = document.querySelector('.search-form_input').value;
+  
+    if (currentPage) { apiService.page = currentPage; }
+    
+    if (searchFieldValue) {
+        
+         sessionStorage.setItem('search', searchFieldValue)
+        apiService.searchQuery  = searchFieldValue;
+    apiService.fetchSearchMovies().then(idToGenre).then(renderSearchedFilms)
+    }
+    else {
+        gallery.innerHTML = '';
+        apiService.fetchMovieTrends().then(idToGenre).then(renderTrends)
+       
+    }
 
-  if (searchFieldValue) {
-    sessionStorage.setItem('search', searchFieldValue);
-    apiService.searchQuery = searchFieldValue;
-    apiService.fetchSearchMovies().then(idToGenre).then(renderSearchedFilms);
-  } else {
-    gallery.innerHTML = '';
-    apiService.fetchMovieTrends().then(idToGenre).then(renderTrends);
-    console.log('ytn htp', searchFieldValue);
-  }
 }
 function renderSearchedFilms(data) {
   console.log(data);
@@ -48,11 +50,30 @@ function renderSearchedFilms(data) {
 
       filmArray.push(film);
     }
-    const markup = movieTpl(filmArray);
-    gallery.innerHTML = markup;
-  }
+    else {
+            genreData(data)
 }
-
+    
+    
+}
+function genreData(data) {
+        
+           let filmArray = [];
+        for (let film of data) {
+                   
+            if (film.genre_name !== undefined && film.genre_name.length >= 3) {
+                       film.genre_name.splice(2, film.genre_name.length, 'Other')
+                   }
+                  if (film.release_date !== undefined) {
+                      film.release_date = film.release_date.slice(0, 4);
+                    }
+                   
+                   filmArray.push(film);
+               }
+               const markup = movieTpl(filmArray);
+                   gallery.innerHTML = markup; 
+           }
+   
 function idToGenre(film_list) {
   changeToName(JSON.parse(localStorage.getItem('genreList')), film_list);
 
@@ -78,4 +99,6 @@ function idToGenre(film_list) {
   return film_list;
 }
 
-export { renderSearch, idToGenre };
+
+export { renderSearch, idToGenre , genreData}
+
