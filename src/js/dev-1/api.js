@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-
 export default class ApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
     this.API_KEY = '90cb713cbad21b579532fb5c59ca1f23';
     this.BASE_URL = `https://api.themoviedb.org/3`;
-
   }
   // Запрос популярных фильмов
   async fetchMovieTrends() {
@@ -18,13 +16,11 @@ export default class ApiService {
         // Добавляет запись в хранилище при фетче
         localStorage.setItem('filmInfo', JSON.stringify(data.results));
 
-
-          console.log(data);
-          this.total_pages = data.total_pages;
-              this.incrementPage();
-              return data.results;
-          });
-
+        console.log(data);
+        this.total_pages = data.total_pages;
+        this.incrementPage();
+        return data.results;
+      });
   }
   // Запрос с использованием поисковой строки
   async fetchSearchMovies() {
