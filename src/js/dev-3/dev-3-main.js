@@ -1,5 +1,5 @@
 import movieModalTpl from '../../templates/film-details.hbs';
-import { renderMovies, clearFilmsGallery } from '../dev-5/dev-5-main.js';
+import { renderMovies, clearFilmsGallery, moviesLibraryMarkup } from '../dev-5/dev-5-main.js';
 import ApiService from '../dev-1/api.js';
 const apiService = new ApiService();
 
@@ -169,9 +169,12 @@ function removeWatcheId() {
 
       if (libraryBtn.classList.contains('current-link')) {
         watchList = get('watched');
-        clearFilmsGallery();
-        renderMovies(watchList);
-        console.log(1);
+
+        if (watchList === null || watchList.length === 0) {
+          moviesLibraryMarkup();
+        } else {
+          renderMovies(watchList);
+        }
       }
     }
   }
@@ -194,9 +197,12 @@ function removeQueueId() {
 
       if (libraryBtn.classList.contains('current-link')) {
         queueList = get('queue');
-        clearFilmsGallery();
-        renderMovies(queueList);
-        console.log(2);
+
+        if (queueList === null || queueList.length === 0) {
+          moviesLibraryMarkup();
+        } else {
+          renderMovies(queueList);
+        }
       }
     }
   }
