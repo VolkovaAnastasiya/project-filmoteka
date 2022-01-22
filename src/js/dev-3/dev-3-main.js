@@ -1,4 +1,5 @@
 import movieModalTpl from '../../templates/film-details.hbs';
+import { renderMovies, clearFilmsGallery } from '../dev-5/dev-5-main.js';
 import ApiService from '../dev-1/api.js';
 const apiService = new ApiService();
 
@@ -154,8 +155,12 @@ function removeWatcheId() {
       const filterNevArr = watchList.filter(el => el.id !== filmId);
       remove('watched');
       save('watched', filterNevArr);
+      watchList = get('watched');
+      renderMovies(watchList);
     }
   }
+
+  renderMovies(watchList);
   textModalBtn(filmId);
 }
 
@@ -171,9 +176,12 @@ function removeQueueId() {
       const filterNevArrQueue = queueList.filter(el => el.id !== filmId); //-удаляет со списка
       remove('queue');
       save('queue', filterNevArrQueue); // ключ куда записывается
+      queueList = get('queue');
+      renderMovies(queueList);
     }
   }
   textModalBtn(filmId);
+  renderMovies(queueList);
 }
 
 function inArrayKey(id, key) {
@@ -191,12 +199,12 @@ function inArrayKey(id, key) {
 // Проверяет есть ли сохраненный ключ
 function test() {
   if (get('watched')) {
-    return;
+    return get('watched');
   } else {
     save('watched', []);
   }
   if (get('queue')) {
-    return;
+    return get('queue');
   } else {
     save('queue', []);
   }
