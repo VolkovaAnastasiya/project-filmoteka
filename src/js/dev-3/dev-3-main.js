@@ -134,6 +134,11 @@ function addWatcheIdFilm(event) {
     watchList.push(newList);
     save('watched', watchList);
     textModalBtn(filmId);
+    if (libraryBtn.classList.contains('current-link')) {
+      watchList = get('watched');
+
+      renderMovies(watchList);
+    }
   }
 }
 
@@ -150,6 +155,11 @@ function addQueueIdFilm() {
     queueList.push(newList);
     save('queue', queueList);
     textModalBtn(filmId);
+    if (libraryBtn.classList.contains('current-link')) {
+      queueList = get('queue');
+
+      renderMovies(queueList);
+    }
   }
 }
 
@@ -207,6 +217,7 @@ function removeQueueId() {
     }
   }
   textModalBtn(filmId);
+  renderMovies(queueList);
 }
 
 function inArrayKey(id, key) {
