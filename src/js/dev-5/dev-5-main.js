@@ -8,27 +8,28 @@ import pagination from '../dev-1/pagination';
 
 const apiService = new ApiService();
 
-const homeBtn = document.querySelector('.btn-home-js');
-const mainLogo = document.querySelector('.nav-logo');
+const refs = {
+  watched: document.querySelector('.btn-watched-js'),
+  queue: document.querySelector('.btn-queue-js'),
+  homeBtn: document.querySelector('.btn-home-js'),
+  libraryBtn: document.querySelector('.btn-myLibrary-js'),
+  gallery: document.querySelector('.cards-gallery__list'),
+  mainLogo: document.querySelector('.nav-logo'),
+};
 
-homeBtn.addEventListener('click', onHomeBtnClick);
-mainLogo.addEventListener('click', onHomeBtnClick);
+refs.homeBtn.addEventListener('click', onHomeBtnClick);
+refs.mainLogo.addEventListener('click', onHomeBtnClick);
 
 function onHomeBtnClick(e) {
   e.preventDefault();
+  refs.homeBtn.classList.add('current-link');
+  refs.libraryBtn.classList.remove('current-link');
   apiService.resetPage();
   pagination.reset();
   apiService.fetchMovieTrends().then(idToGenre).then(renderTrends);
 }
 
 /////////////////////////////////// MyLibrary
-
-const refs = {
-  watched: document.querySelector('.btn-watched-js'),
-  queue: document.querySelector('.btn-queue-js'),
-  libraryBtn: document.querySelector('.btn-myLibrary-js'),
-  gallery: document.querySelector('.cards-gallery__list'),
-};
 
 refs.watched.addEventListener('click', onClickWatchedFilms);
 refs.queue.addEventListener('click', onClickQueueFilms);
