@@ -8,10 +8,6 @@ const devGalleryMarkup = renderModalDev(devInfo)
 const modalDevList = document.querySelector('.modal-project-developers__list');
 const devModalCloseBtn = document.querySelector('.dev-modal-close-button');
 
-console.log(teamModal)
-
-
-
 
 footerModalOpen.addEventListener('click',footerModalAction )
 
@@ -29,9 +25,7 @@ function footerModalAction(evt) {
 
     
   devModalCloseBtn.addEventListener('click',footerModalAction );
-  console.log(modalMoreDev);
   modalMoreDev.forEach(elem => elem.addEventListener('click', onCardBtnClick))
-   
   teamModal.classList.toggle('is-open');
   document.body.classList.toggle('is-overflow');
 
@@ -42,7 +36,6 @@ function onCardBtnClick(evt) {
   const devDataDiv = evt.currentTarget.parentNode;
   evt.currentTarget.classList.toggle('button-active');
   devDataDiv.querySelector('.developer-card__comment').classList.toggle('is-open');
-  console.log(document.querySelector('.developer-card__comment').parentElement);
 
   if (devDataDiv.parentNode.classList == 'developer-card') {
     devDataDiv.parentNode.classList = 'card-open-details';
