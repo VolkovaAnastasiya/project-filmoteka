@@ -1,9 +1,9 @@
 import refs from './refs';
 
 const { header, btnHome, btnMyLibrary, formSearch, navLibrary } = refs;
+const mainLogo = document.querySelector('.nav-logo');
 
-
-
+mainLogo.addEventListener('click', onBtnLogoHomeClick);
 btnHome.addEventListener('click', onBtnLogoHomeClick);
 btnMyLibrary.addEventListener('click', onBtnMyLibraryClick);
 
@@ -11,7 +11,6 @@ function toggleClass(refsRemove, refsAdd, classs) {
   refsRemove.classList.remove(classs);
   refsAdd.classList.add(classs);
 }
-
 
 function onBtnLogoHomeClick() {
   toggleClass(formSearch, navLibrary, 'visually-hidden');
