@@ -5,6 +5,7 @@ import pagination from '../dev-1/pagination';
 const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 searchForm.addEventListener('change', onFormSubmit);
@@ -30,8 +31,9 @@ function renderSearch(currentPage) {
     apiService.fetchSearchMovies().then(idToGenre).then(renderSearchedFilms)
     }
     else {
-        gallery.innerHTML = '';
-        apiService.fetchMovieTrends().then(idToGenre).then(genreData)
+      gallery.innerHTML = '';
+      apiService.fetchMovieTrends().then(idToGenre).then(genreData);
+      Notify.warning('Пожалуйста введите название фильма');
        
     }
 
@@ -39,7 +41,8 @@ function renderSearch(currentPage) {
 
 function renderSearchedFilms(data) {  
     if (data.length === 0) {
-        gallery.innerHTML = "SORRY WE CANT FIND ANY MOVIE WITH THIS NAME";
+      gallery.innerHTML = "SORRY WE CANT FIND ANY MOVIE WITH THIS NAME";
+      Notify.failure('Извените такого фильма нет');
 
     }
     else {
