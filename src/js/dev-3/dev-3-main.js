@@ -1,5 +1,5 @@
 import movieModalTpl from '../../templates/film-details.hbs';
-import { renderMovies, clearFilmsGallery } from '../dev-5/dev-5-main.js';
+import { renderMovies, clearFilmsGallery, moviesLibraryMarkup } from '../dev-5/dev-5-main.js';
 import ApiService from '../dev-1/api.js';
 const apiService = new ApiService();
 
@@ -8,6 +8,7 @@ const closeModal = document.querySelector('[data-film-modal-close]');
 const modalFilm = document.querySelector('[data-film-modal]');
 const backdrop = document.querySelector('.backdrop__film');
 const boxFilm = document.querySelector('.modal__film-detalies');
+const libraryBtn = document.querySelector('.btn-myLibrary-js');
 
 openModal.addEventListener('click', onOpenModalFilm);
 closeModal.addEventListener('click', onCloseModalFilm);
@@ -23,8 +24,17 @@ function onOpenModalFilm(event) {
   save('filmId', filmId);
 
   const filmItem = get('filmInfo');
+  const watchList = get('watched');
+  const queueList = get('queue');
+  //   console.log(3);
+  // }
 
-  const newList = filmItem.find(elem => elem.id === Number(filmId));
+  const newList =
+    filmItem.find(elem => elem.id === Number(filmId)) ||
+    watchList.find(elem => elem.id === Number(filmId)) ||
+    queueList.find(elem => elem.id === Number(filmId));
+
+  // const newList = filmItem.find(elem => elem.id === Number(filmId));
 
   save('newList', newList);
   renderModal(newList);
@@ -145,6 +155,7 @@ function addQueueIdFilm() {
 
 function removeWatcheId() {
   const btnWatch = document.querySelector('.modal-details_queue-button');
+  const libraryBtn = document.querySelector('.btn-myLibrary-js');
 
   let watchList = [];
   watchList = get('watched');
@@ -155,12 +166,19 @@ function removeWatcheId() {
       const filterNevArr = watchList.filter(el => el.id !== filmId);
       remove('watched');
       save('watched', filterNevArr);
-      watchList = get('watched');
-      renderMovies(watchList);
+
+      if (libraryBtn.classList.contains('current-link')) {
+        watchList = get('watched');
+
+        if (watchList === null || watchList.length === 0) {
+          moviesLibraryMarkup();
+        } else {
+          renderMovies(watchList);
+        }
+      }
     }
   }
 
-  renderMovies(watchList);
   textModalBtn(filmId);
 }
 
@@ -176,12 +194,19 @@ function removeQueueId() {
       const filterNevArrQueue = queueList.filter(el => el.id !== filmId); //-удаляет со списка
       remove('queue');
       save('queue', filterNevArrQueue); // ключ куда записывается
-      queueList = get('queue');
-      renderMovies(queueList);
+
+      if (libraryBtn.classList.contains('current-link')) {
+        queueList = get('queue');
+
+        if (queueList === null || queueList.length === 0) {
+          moviesLibraryMarkup();
+        } else {
+          renderMovies(queueList);
+        }
+      }
     }
   }
   textModalBtn(filmId);
-  renderMovies(queueList);
 }
 
 function inArrayKey(id, key) {
