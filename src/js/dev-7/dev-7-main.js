@@ -1,4 +1,3 @@
-console.log(`7`)
 import refs from './refs';
 
 const { header, btnHome, btnMyLibrary, formSearch, navLibrary } = refs;

@@ -5,10 +5,7 @@ let timeoutId = null;
 const { notification } = refs;
 
 notification.addEventListener('click', onNotificationClick);
-// console.log('fdgfdgdfghgdhg', notification);
 
-
-// showNotification()
 
 function onNotificationClick() {
     hideNotification()

@@ -6,7 +6,6 @@ const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
 import { showNotification } from '../dev-7/alert.js';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 searchForm.addEventListener('change', onFormSubmit);
