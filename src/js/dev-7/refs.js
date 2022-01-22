@@ -10,5 +10,6 @@ export default {
     // ---------- library --------------
     btnWatched: document.querySelector('.btn-watched-js'),
     btnQueue: document.querySelector('.btn-queue-js'),
+    notification: document.querySelector('.js-alert'),
 }
 
