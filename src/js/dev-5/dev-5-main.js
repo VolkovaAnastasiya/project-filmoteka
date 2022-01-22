@@ -3,7 +3,6 @@ import { renderTrends, renderLibrary } from '../dev-1/renders';
 import movieTpl from '../../templates/film-card-library.hbs';
 import { idToGenre, genreData } from '../dev-2/dev-2-main';
 import pagination from '../dev-1/pagination';
-import { genreData } from '../dev-2/dev-2-main.js';
 
 ////////////////// Когда жмешь на кнопку Home, то рисуется галлерея
 
@@ -19,7 +18,6 @@ const refs = {
   gallery: document.querySelector('.cards-gallery__list'),
   mainLogo: document.querySelector('.nav-logo'),
 };
-
 
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 refs.mainLogo.addEventListener('click', onHomeBtnClick);
@@ -40,7 +38,6 @@ function onHomeBtnClick(e) {
 refs.watched.addEventListener('click', onClickWatchedFilms);
 refs.queue.addEventListener('click', onClickQueueFilms);
 refs.libraryBtn.addEventListener('click', onClickLibraryBtn);
-
 
 function onClickLibraryBtn(e) {
   paginationCont.classList.add('pagination-container-is-hidden');
@@ -98,6 +95,5 @@ function renderMovies(data) {
 function clearFilmsGallery() {
   refs.gallery.innerHTML = '';
 }
-
 
 export { renderMovies, clearFilmsGallery, moviesLibraryMarkup };
