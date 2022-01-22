@@ -9,6 +9,8 @@ const modalFilm = document.querySelector('[data-film-modal]');
 const backdrop = document.querySelector('.backdrop__film');
 const boxFilm = document.querySelector('.modal__film-detalies');
 const libraryBtn = document.querySelector('.btn-myLibrary-js');
+const watchedBtn = document.querySelector('.btn-watched-js');
+const queueBtn = document.querySelector('.btn-queue-js');
 
 openModal.addEventListener('click', onOpenModalFilm);
 closeModal.addEventListener('click', onCloseModalFilm);
@@ -155,7 +157,7 @@ function addQueueIdFilm() {
     queueList.push(newList);
     save('queue', queueList);
     textModalBtn(filmId);
-    if (libraryBtn.classList.contains('current-link')) {
+    if (queueBtn.classList.contains('active')) {
       queueList = get('queue');
 
       renderMovies(queueList);
@@ -177,7 +179,7 @@ function removeWatcheId() {
       remove('watched');
       save('watched', filterNevArr);
 
-      if (libraryBtn.classList.contains('current-link')) {
+      if (watchedBtn.classList.contains('active')) {
         watchList = get('watched');
 
         if (watchList === null || watchList.length === 0) {
