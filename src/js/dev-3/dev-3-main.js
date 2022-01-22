@@ -120,9 +120,12 @@ function textModalBtn(id) {
     btnQueue.disabled = false;
   }
 }
+const watchedBtn = document.querySelector('.btn-watched-js');
+const queueBtn = document.querySelector('.btn-queue-js');
 
 function addWatcheIdFilm(event) {
   const btnWatch = document.querySelector('.modal-details_watched-button');
+
   const filmId = Number(get('filmId'));
   const newList = get('newList');
 
@@ -134,7 +137,8 @@ function addWatcheIdFilm(event) {
     watchList.push(newList);
     save('watched', watchList);
     textModalBtn(filmId);
-    if (libraryBtn.classList.contains('current-link')) {
+    if (watchedBtn.classList.contains('active')) {
+      queueBtn.classList.remove('active');
       watchList = get('watched');
 
       renderMovies(watchList);
@@ -144,8 +148,11 @@ function addWatcheIdFilm(event) {
 
 function addQueueIdFilm() {
   const btnQueue = document.querySelector('.modal-details_queue-button');
+
   const filmId = Number(get('filmId'));
   const newList = get('newList');
+  let queueList = [];
+  queueList = get('queue');
 
   if (btnQueue.classList.contains('active')) {
     removeQueueId(filmId);
@@ -155,12 +162,18 @@ function addQueueIdFilm() {
     queueList.push(newList);
     save('queue', queueList);
     textModalBtn(filmId);
-    if (libraryBtn.classList.contains('current-link')) {
+    if (queueBtn.classList.contains('active')) {
+      watchedBtn.classList.remove('active');
       queueList = get('queue');
 
       renderMovies(queueList);
     }
   }
+  // if (libraryBtn.classList.contains('current-link') && queueBtn.classList.contains('active')) {
+  //   queueList = get('queue');
+
+  //   renderMovies(queueList);
+  // }
 }
 
 function removeWatcheId() {
@@ -217,7 +230,6 @@ function removeQueueId() {
     }
   }
   textModalBtn(filmId);
-  renderMovies(queueList);
 }
 
 function inArrayKey(id, key) {
