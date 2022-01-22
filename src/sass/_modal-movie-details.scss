@@ -41,7 +41,7 @@
   }
   @media (min-width: 1024px) {
     display: flex;
-    width: 786px;
+    width: 732px;
     height: 568px;
     padding: 50px 30px 40px 30px;
   }
@@ -226,6 +226,7 @@
 }
 
 .modal-details_btn {
+  box-sizing: content-box;
   width: 112px;
   height: 44px;
   text-align: center;
