@@ -2,8 +2,11 @@
   padding: 45px 0;
   background-color: rgba(0, 0, 0, 0.56);
   height: 230px;
-  margin-left: auto;
-  margin-right: auto;
+
+  // Для растягивания фонового изобрадения, после того. как растянули dody на вьюпорт
+  // margin-left: auto;
+  // margin-right: auto;
+
   background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url('../images/mobile/header_background_library@1x.jpg');
   background-repeat: no-repeat;

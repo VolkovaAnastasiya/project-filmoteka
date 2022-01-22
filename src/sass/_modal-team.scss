@@ -1,0 +1,289 @@
+// Растигивает документ на весь экран, чтоб приклеить футер к низу страницы. Надо подправить картинку в хедере, убрав авто маржины
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cards-gallery {
+  flex-grow: 1;
+}
+
+.is_clicked {
+  transform: scale(1.5);
+}
+
+.developer-card__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  background-size: contain;
+  background-image: url('../images/devs-photo/dev-1.jpg');
+  width: 100px;
+  background-position: center;
+  height: 100px;
+  background-repeat: no-repeat;
+}
+
+// .dev-1 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+// .dev-2 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+// .dev-3 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+// .dev-4 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+// .dev-5 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+// .dev-6 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+// .dev-7 {
+//   background-image: url('../images/devs-photo/dev-1.jpg');
+// }
+
+.dev-modal-close-button {
+  box-sizing: content-box;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  align-items: center;
+  border-radius: 50%;
+  border-color: rgba(0, 0, 0, 0.6);
+  background-color: inherit;
+  padding: 3px;
+
+  transition: all 250ms ease-in;
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    color: #ffffff;
+    border: 1px solid #ff6b01;
+    transition: all 250ms ease-in;
+  }
+}
+.dev-modal-close-button__icon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.developer-card__text-box {
+  justify-content: center;
+  align-items: center;
+}
+
+.developer-card,
+.card-open-details {
+  position: relative;
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 15px;
+  flex-basis: calc((100% - 90px) / 1);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: all 300ms linear;
+}
+.developer-card {
+  @media (max-width: 767px) {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    flex-basis: calc((100% - 80px) / 2);
+  }
+
+  @media (min-width: 1200px) {
+    flex-basis: calc((100% - 90px) / 4);
+
+    // &:not(:last-child) {
+    //   margin-right: 30px;
+    // }
+  }
+}
+.card-open-details {
+  z-index: 1;
+  max-width: 80vw;
+}
+
+.developer-card:hover,
+.developer-card:focus {
+  animation: myAnim 1500ms linear 10ms infinite alternate backwards;
+}
+
+@keyframes myAnim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.modal-project-developers {
+  display: none;
+}
+.modal-project-developers__box {
+  position: fixed;
+  overflow-y: auto;
+  top: 15px;
+  bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 95vh;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 30px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    25deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(154, 84, 49, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.modal-project-developers.is-open {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal-project-developers__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.modal-project-developers {
+  text-align: center;
+  padding: 30px 0;
+  // background-color: $background-color;
+}
+
+.developer-card__title {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  color: black;
+}
+.developer-card__dev-part,
+.developer-card__comment.is-open {
+  display: block;
+  font-size: 16px;
+  line-height: 1.19;
+  margin-bottom: 16px;
+}
+.developer-card__comment {
+  display: none;
+}
+.social {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  fill: black;
+
+  transition-property: background-color, fill;
+  // transition-duration: $duration;
+  // transition-timing-function: $cubic;
+
+  &:hover,
+  &:focus {
+    background-color: white;
+    fill: blue;
+  }
+}
+.modal-close-button__dev {
+  box-sizing: content-box;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  align-items: center;
+  border-radius: 50%;
+  border-color: rgba(0, 0, 0, 0.6);
+  background-color: inherit;
+  padding: 3px;
+
+  transition: all 250ms ease-in;
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    color: #ffffff;
+    border: 1px solid #ff6b01;
+    transition: all 250ms ease-in;
+  }
+}
+
+.dev-card-btn {
+  box-sizing: content-box;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  border-color: rgba(0, 0, 0, 0.6);
+  background-color: inherit;
+  padding: 3px;
+  transition: all 0.25s ease-in;
+  &:hover {
+    background-color: #ff6b01;
+    transform: rotate(180deg);
+  }
+}
+.dev-card-btn.button-active {
+  transform: rotate(180deg);
+  &:hover {
+    transform: rotate(0deg);
+  }
+}
+
+.dev-card-icon {
+  transform: translate(-50%, -50%);
+  position: absolute;
+}

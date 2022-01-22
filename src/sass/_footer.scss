@@ -1,0 +1,19 @@
+.copyright_modal-open-text {
+  cursor: pointer;
+  background-color: none;
+  border: none;
+  color: #000000;
+  &:hover,
+  &:focus {
+    color: #ff6b08;
+  }
+}
+.copyright_modal-open-button {
+  background-color: transparent;
+  border: none;
+}
+footer {
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+}
