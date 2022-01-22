@@ -3,12 +3,13 @@ import { renderTrends, renderLibrary } from '../dev-1/renders';
 import movieTpl from '../../templates/film-card-library.hbs';
 import { idToGenre } from '../dev-2/dev-2-main';
 import pagination from '../dev-1/pagination';
+import { genreData } from '../dev-2/dev-2-main.js';
 
 ////////////////// Когда жмешь на кнопку Home, то рисуется галлерея
 
 const apiService = new ApiService();
-
 const homeBtn = document.querySelector('.btn-home-js');
+const paginationCont = document.querySelector('.pagination-container');
 
 homeBtn.addEventListener('click', onHomeBtnClick);
 
@@ -16,7 +17,9 @@ function onHomeBtnClick(e) {
   e.preventDefault();
   apiService.resetPage();
   pagination.reset();
-  apiService.fetchMovieTrends().then(idToGenre).then(renderTrends);
+  apiService.fetchMovieTrends(1).then(idToGenre).then(genreData);
+  paginationCont.classList.remove('pagination-container-is-hidden');
+  sessionStorage.clear();
 }
 
 /////////////////////////////////// MyLibrary
@@ -35,9 +38,12 @@ refs.watched.addEventListener('click', onClickWatchedFilms);
 refs.queue.addEventListener('click', onClickQueueFilms);
 refs.libraryBtn.addEventListener('click', onClickLibraryBtn);
 
+
 function onClickLibraryBtn(e) {
-  apiService.resetPage();
-  pagination.reset();
+  paginationCont.classList.add('pagination-container-is-hidden');
+  //apiService.resetPage();
+  //pagination.reset();
+
   onClickWatchedFilms();
   refs.watched.classList.add('active');
   refs.queue.classList.remove('active');
@@ -68,7 +74,6 @@ function onClickWatchedFilms() {
 function onClickQueueFilms() {
   refs.watched.classList.remove('active');
   refs.queue.classList.add('active');
-
   const queue = JSON.parse(localStorage.getItem('queue'));
   clearFilmsGallery();
   if (queue === null || queue.length === 0) {
@@ -90,5 +95,6 @@ function renderMovies(data) {
 function clearFilmsGallery() {
   refs.gallery.innerHTML = '';
 }
+
 
 export { renderMovies, clearFilmsGallery, moviesLibraryMarkup };

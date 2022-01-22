@@ -4,6 +4,12 @@
   font-size: 12px;
   line-height: 1.333 !important;
 }
+.pagination-container {
+  display: block;
+}
+.pagination-container-is-hidden {
+  display: none;
+}
 
 .tui-pagination .tui-page-btn {
   font-weight: 500 !important;

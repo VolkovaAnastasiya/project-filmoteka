@@ -7,7 +7,7 @@ import ApiService from './api.js'
 import { renderTrends } from './renders.js';
 const options = {
   // below default value of options
-  totalItems: 20000,
+  totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -32,63 +32,29 @@ const options = {
   },
 };
 const pagination = new Pagination('pagination', options);
-//const currentPage = pagination.getCurrentPage();
 const list = document.querySelector('.cards-gallery__list');
 const apiService = new ApiService();
-// apiService.fetchMovieTrends(currentPage);
-
-//pagination.setTotalItems(1000); //функция на тотал страниц пагинации
-
 
 pagination.on('beforeMove', async evt => {
-  apiService.page = evt.page;
-  
-    
+  apiService.page = evt.page; 
 
   list.innerHTML = '';
 
   if (sessionStorage.getItem('search')) {
     options.page = apiService.page;
     console.log('sd', options.page)
-    // console.log(apiService.page)
-    // Записывает в рендер страницу из апи
     renderSearch(options.page);
 
-  
   }
 
   else {
     options.page = apiService.page;
-      console.log(options.page)
-    // Меняет currentPage, на страницу из апи
+    console.log(options.page)
     apiService.fetchMovieTrends(options.page).then(idToGenre).then(genreData);
-    // apiService.fetchMovieTrends().then(renderTrends);
-    
+     
   }
 
 });
-
-export function setPaginationPages(totalPages) {
-  if (totalPages <= 1) {
-    refs.divPagination.classList.add('hidden-tui');
-  } else {
-    refs.divPagination.classList.remove('hidden-tui');
-    if (totalPages !== pagination.options.totalItems) {
-      pagination.reset(totalPages);
-    } else {
-      pagination.setTotalItems(totalPages);
-    }
-  }
-}
-
-
-/*pagination.on('afterMove', event => {
-  const actualPage = event.page;
-    list.innerHTML = '';
-    apiService.fetchMovieTrends(actualPage).then(renderTrends);
-   
-  
-});*/
 
 export default pagination;
 
