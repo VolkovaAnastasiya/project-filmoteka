@@ -1,20 +1,33 @@
 import ApiService from '../dev-1/api.js';
 import { renderTrends, renderLibrary } from '../dev-1/renders';
 import movieTpl from '../../templates/film-card-library.hbs';
-import { idToGenre } from '../dev-2/dev-2-main';
+import { idToGenre, genreData } from '../dev-2/dev-2-main';
 import pagination from '../dev-1/pagination';
 import { genreData } from '../dev-2/dev-2-main.js';
 
 ////////////////// Когда жмешь на кнопку Home, то рисуется галлерея
 
 const apiService = new ApiService();
-const homeBtn = document.querySelector('.btn-home-js');
+
 const paginationCont = document.querySelector('.pagination-container');
 
-homeBtn.addEventListener('click', onHomeBtnClick);
+const refs = {
+  watched: document.querySelector('.btn-watched-js'),
+  queue: document.querySelector('.btn-queue-js'),
+  homeBtn: document.querySelector('.btn-home-js'),
+  libraryBtn: document.querySelector('.btn-myLibrary-js'),
+  gallery: document.querySelector('.cards-gallery__list'),
+  mainLogo: document.querySelector('.nav-logo'),
+};
+
+
+refs.homeBtn.addEventListener('click', onHomeBtnClick);
+refs.mainLogo.addEventListener('click', onHomeBtnClick);
 
 function onHomeBtnClick(e) {
   e.preventDefault();
+  refs.homeBtn.classList.add('current-link');
+  refs.libraryBtn.classList.remove('current-link');
   apiService.resetPage();
   pagination.reset();
   apiService.fetchMovieTrends(1).then(idToGenre).then(genreData);
@@ -23,16 +36,6 @@ function onHomeBtnClick(e) {
 }
 
 /////////////////////////////////// MyLibrary
-
-const refs = {
-  watched: document.querySelector('.btn-watched-js'),
-  queue: document.querySelector('.btn-queue-js'),
-  libraryBtn: document.querySelector('.btn-myLibrary-js'),
-  gallery: document.querySelector('.cards-gallery__list'),
-};
-
-// const watched = JSON.parse(localStorage.getItem('watched'));
-// const queue = JSON.parse(localStorage.getItem('queue'));
 
 refs.watched.addEventListener('click', onClickWatchedFilms);
 refs.queue.addEventListener('click', onClickQueueFilms);
