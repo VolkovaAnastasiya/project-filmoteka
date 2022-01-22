@@ -137,7 +137,7 @@ function addWatcheIdFilm(event) {
     watchList.push(newList);
     save('watched', watchList);
     textModalBtn(filmId);
-    if (watchedBtn.classList.contains('active')) {
+    if (watchedBtn.classList.contains('active') && libraryBtn.classList.contains('current-link')) {
       queueBtn.classList.remove('active');
       watchList = get('watched');
 
@@ -162,7 +162,7 @@ function addQueueIdFilm() {
     queueList.push(newList);
     save('queue', queueList);
     textModalBtn(filmId);
-    if (queueBtn.classList.contains('active')) {
+    if (queueBtn.classList.contains('active') && libraryBtn.classList.contains('current-link')) {
       watchedBtn.classList.remove('active');
       queueList = get('queue');
 
@@ -190,7 +190,10 @@ function removeWatcheId() {
       remove('watched');
       save('watched', filterNevArr);
 
-      if (libraryBtn.classList.contains('current-link')) {
+      if (
+        watchedBtn.classList.contains('active') &&
+        libraryBtn.classList.contains('current-link')
+      ) {
         watchList = get('watched');
 
         if (watchList === null || watchList.length === 0) {
@@ -218,7 +221,7 @@ function removeQueueId() {
       remove('queue');
       save('queue', filterNevArrQueue); // ключ куда записывается
 
-      if (libraryBtn.classList.contains('current-link')) {
+      if (queueBtn.classList.contains('active') && libraryBtn.classList.contains('current-link')) {
         queueList = get('queue');
 
         if (queueList === null || queueList.length === 0) {
