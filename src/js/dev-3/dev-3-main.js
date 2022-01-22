@@ -8,6 +8,7 @@ const closeModal = document.querySelector('[data-film-modal-close]');
 const modalFilm = document.querySelector('[data-film-modal]');
 const backdrop = document.querySelector('.backdrop__film');
 const boxFilm = document.querySelector('.modal__film-detalies');
+const libraryBtn = document.querySelector('.btn-myLibrary-js');
 
 openModal.addEventListener('click', onOpenModalFilm);
 closeModal.addEventListener('click', onCloseModalFilm);
@@ -23,8 +24,17 @@ function onOpenModalFilm(event) {
   save('filmId', filmId);
 
   const filmItem = get('filmInfo');
+  const watchList = get('watched');
+  const queueList = get('queue');
+  //   console.log(3);
+  // }
 
-  const newList = filmItem.find(elem => elem.id === Number(filmId));
+  const newList =
+    filmItem.find(elem => elem.id === Number(filmId)) ||
+    watchList.find(elem => elem.id === Number(filmId)) ||
+    queueList.find(elem => elem.id === Number(filmId));
+
+  // const newList = filmItem.find(elem => elem.id === Number(filmId));
 
   save('newList', newList);
   renderModal(newList);
@@ -145,6 +155,7 @@ function addQueueIdFilm() {
 
 function removeWatcheId() {
   const btnWatch = document.querySelector('.modal-details_queue-button');
+  const libraryBtn = document.querySelector('.btn-myLibrary-js');
 
   let watchList = [];
   watchList = get('watched');
@@ -155,12 +166,16 @@ function removeWatcheId() {
       const filterNevArr = watchList.filter(el => el.id !== filmId);
       remove('watched');
       save('watched', filterNevArr);
-      watchList = get('watched');
-      renderMovies(watchList);
+
+      if (libraryBtn.classList.contains('current-link')) {
+        watchList = get('watched');
+        clearFilmsGallery();
+        renderMovies(watchList);
+        console.log(1);
+      }
     }
   }
 
-  renderMovies(watchList);
   textModalBtn(filmId);
 }
 
@@ -176,12 +191,16 @@ function removeQueueId() {
       const filterNevArrQueue = queueList.filter(el => el.id !== filmId); //-удаляет со списка
       remove('queue');
       save('queue', filterNevArrQueue); // ключ куда записывается
-      queueList = get('queue');
-      renderMovies(queueList);
+
+      if (libraryBtn.classList.contains('current-link')) {
+        queueList = get('queue');
+        clearFilmsGallery();
+        renderMovies(queueList);
+        console.log(2);
+      }
     }
   }
   textModalBtn(filmId);
-  renderMovies(queueList);
 }
 
 function inArrayKey(id, key) {
