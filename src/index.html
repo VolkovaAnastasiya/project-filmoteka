@@ -20,7 +20,7 @@
       <div class="container">
         <nav class="nav">
           <a href="./index.html" class="nav-logo">
-            <svg class="icon-filmoteka">
+            <svg class="icon-filmoteka run-animation" id="logo">
               <use href="./images/sprite.svg#icon-film"></use>
             </svg>
             <span class="logo-word">Filmoteka</span>
@@ -37,6 +37,7 @@
             class="search-form_input"
             type="text"
             name="movie-to-search"
+            autocomplete="off"
             placeholder="Поиск фильмов"
           />
           <button
@@ -49,6 +50,9 @@
             </svg>
           </button>
         </form>
+        <p class="succes visually-hidden js-alert">
+          Search result not successful. Enter the correct movie name!!!
+        </p>
 
         <!-- при активной странице библиотеки -->
         <div class="header_switch-box--library-page visually-hidden nav-library-js">
@@ -65,8 +69,8 @@
         <ul class="cards-gallery__list" data-film-modal-open></ul>
       </div>
       <div class="pagination-container">
-      <div id="pagination" class="tui-pagination"></div>
-    </div>
+        <div id="pagination" class="tui-pagination"></div>
+      </div>
     </section>
 
     <footer>

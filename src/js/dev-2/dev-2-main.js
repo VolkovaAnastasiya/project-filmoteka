@@ -9,6 +9,9 @@ const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
 
+import { showNotification } from '../dev-7/alert.js';
+
+
 searchForm.addEventListener('change', onFormSubmit);
 searchForm.addEventListener('submit', onFormSubmit);
 
@@ -43,6 +46,8 @@ function renderSearch(currentPage) {
 function renderSearchedFilms(data) {
   if (data.length === 0) {
     gallery.innerHTML = 'SORRY WE CANT FIND ANY MOVIE WITH THIS NAME';
+    showNotification();
+
   } else {
     genreData(data);
   }
@@ -87,4 +92,6 @@ function idToGenre(film_list) {
   return film_list;
 }
 
+
 export { renderSearch, idToGenre, genreData };
+

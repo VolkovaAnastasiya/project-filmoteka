@@ -36,13 +36,13 @@
     display: flex;
     margin: auto;
     width: 600px;
-    height: 562px;
+    min-height: 582px;
     padding: 42px 29px 40px 28px;
   }
   @media (min-width: 1024px) {
     display: flex;
     width: 732px;
-    height: 568px;
+    min-height: 628px;
     padding: 50px 30px 40px 30px;
   }
 
@@ -93,6 +93,7 @@
 
 //template
 .modal-details {
+  box-sizing: content-box;
   @media (min-width: 768px) {
     display: flex;
   }

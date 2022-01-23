@@ -1,7 +1,7 @@
 import axios from 'axios';
+
 import pagination  from './pagination';
 import { openSpinner, closeSpinner } from '../dev-5/spinner';
-
 
 
 export default class ApiService {
@@ -23,6 +23,7 @@ export default class ApiService {
       .then(data => {
         // Добавляет запись в хранилище при фетче
         localStorage.setItem('filmInfo', JSON.stringify(data.results));
+
         console.log(pagination._options)
         // pagination.reset();
         // pagination.setTotalItem(data.total_results);
@@ -39,6 +40,7 @@ export default class ApiService {
           this.incrementPage();
           return data.results;
         }
+
       });
   }
   // Запрос с использованием поисковой строки
