@@ -7,7 +7,6 @@ import './dev-6/dev-6-main.js';
 import './dev-7/dev-7-main.js';
 import './dev-5/spinner.js';
 
-
 import ApiService from './dev-1/api.js';
 import { renderTrends, renderLibrary } from './dev-1/renders.js';
 import { renderModal, remove, save, test, get } from './dev-3/dev-3-main.js';
