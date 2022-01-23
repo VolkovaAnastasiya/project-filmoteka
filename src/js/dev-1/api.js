@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { openSpinner, closeSpinner } from '../dev-5/spinner';
 
 export default class ApiService {
   constructor() {
@@ -7,16 +8,19 @@ export default class ApiService {
     this.API_KEY = '90cb713cbad21b579532fb5c59ca1f23';
     this.BASE_URL = `https://api.themoviedb.org/3`;
   }
-    
+
   // Запрос популярных фильмов
   async fetchMovieTrends() {
+    openSpinner();
     const url = `${this.BASE_URL}/movie/popular?api_key=${this.API_KEY}&page=${this.page}`;
+    setInterval(closeSpinner, 500);
+
     return await fetch(url)
       .then(response => response.json())
       .then(data => {
         // Добавляет запись в хранилище при фетче
         localStorage.setItem('filmInfo', JSON.stringify(data.results));
-      
+
         console.log(data.total_pages);
         this.incrementPage();
         return data.results;
