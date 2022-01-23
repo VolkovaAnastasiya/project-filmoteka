@@ -33,7 +33,7 @@
             <td class="movie-details-data-right">
                {{!-- {{#if genres}} --}}
                         {{#each genre_name}}
-                        <span>{{this}}</span>
+                        <span>{{this}}{{#unless @last}},{{/unless}}</span>
                         {{/each}}
                         {{!-- {{else}}<span>N/A</span>
                         {{/if}}</td> --}}
