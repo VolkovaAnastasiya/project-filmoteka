@@ -16,8 +16,7 @@ export default class ApiService {
   async fetchMovieTrends() {
     openSpinner();
     const url = `${this.BASE_URL}/movie/popular?api_key=${this.API_KEY}&page=${this.page}`;
-    setInterval(closeSpinner, 500);
-
+setInterval(closeSpinner, 500);
     return await fetch(url)
       .then(response => response.json())
       .then(data => {

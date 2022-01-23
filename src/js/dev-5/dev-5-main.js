@@ -71,7 +71,7 @@ function onClickWatchedFilms() {
   if (watched === null || watched.length === 0) {
     moviesLibraryMarkup();
   } else {
-    renderMovies(watched);
+    genreData(watched).then(renderMovies(watched));
   }
   return;
 }
@@ -85,7 +85,7 @@ function onClickQueueFilms() {
   if (queue === null || queue.length === 0) {
     moviesLibraryMarkup();
   } else {
-    renderMovies(queue);
+    genreData(queue).then(renderMovies(queue));
   }
   return;
 }
