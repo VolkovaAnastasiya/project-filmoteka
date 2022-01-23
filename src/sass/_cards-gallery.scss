@@ -105,7 +105,15 @@
 }
 
 .movie-card__rating {
-  //
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1px 9px 1px 10px;
+  color: white;
+  margin-left: 5px;
+  background-color: #ff6b08;
+  border-radius: 5px;
 }
 
 ////

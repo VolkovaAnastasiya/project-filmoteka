@@ -45,7 +45,7 @@ function renderSearch(currentPage) {
 
 function renderSearchedFilms(data) {
   if (data.length === 0) {
-    gallery.innerHTML = 'SORRY WE CANT FIND ANY MOVIE WITH THIS NAME';
+    gallery.innerHTML = '<p class = "gallery-warning">SORRY WE CANT FIND ANY MOVIE WITH THIS NAME</p>';
     showNotification();
 
   } else {

@@ -71,7 +71,7 @@ function onClickWatchedFilms() {
   if (watched === null || watched.length === 0) {
     moviesLibraryMarkup();
   } else {
-    genreData(watched).then(renderMovies(watched));
+    renderMovies(watched);
   }
   return;
 }
@@ -85,7 +85,7 @@ function onClickQueueFilms() {
   if (queue === null || queue.length === 0) {
     moviesLibraryMarkup();
   } else {
-    genreData(queue).then(renderMovies(queue));
+    renderMovies(queue);
   }
   return;
 }
@@ -93,9 +93,24 @@ function onClickQueueFilms() {
 /////////////////Render
 
 function renderMovies(data) {
-  const markup = movieTpl(data);
+  let filmArray = [];
+  for (let film of data) {
+    if (film.release_date !== '' && film.release_date !== undefined) {
+      film.release_date = film.release_date.slice(0, 4);
+    } else {
+      film.release_date = 'No information';
+    }
+
+    filmArray.push(film);
+  }
+ const markup = movieTpl(filmArray);
   refs.gallery.innerHTML = markup;
 }
+
+// function renderMovies(data) {
+//   const markup = movieTpl(data);
+//   refs.gallery.innerHTML = markup;
+// }
 
 ///////////////////// Clear container
 function clearFilmsGallery() {
