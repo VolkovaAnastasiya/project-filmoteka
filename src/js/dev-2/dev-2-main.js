@@ -2,14 +2,15 @@ import movieTpl from '../../templates/film-card-main.hbs';
 import ApiService from '../dev-1/api.js';
 import { renderTrends } from '../dev-1/renders';
 import pagination from '../dev-1/pagination';
+import { showNotification } from '../dev-7/alert.js';
 
 
 
 const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
+const paginationCont = document.querySelector('.pagination-container');
 
-import { showNotification } from '../dev-7/alert.js';
 
 
 searchForm.addEventListener('change', onFormSubmit);
@@ -24,6 +25,7 @@ function onFormSubmit(evt) {
 }
 
 function renderSearch(currentPage) {
+   paginationCont.classList.remove('pagination-container-is-hidden');
   
   // pagination.reset()
   const searchFieldValue = document.querySelector('.search-form_input').value;
@@ -44,7 +46,9 @@ function renderSearch(currentPage) {
 }
 
 function renderSearchedFilms(data) {
+ 
   if (data.length === 0) {
+    paginationCont.classList.add('pagination-container-is-hidden');
     gallery.innerHTML = '<p class = "gallery-warning">SORRY WE CANT FIND ANY MOVIE WITH THIS NAME</p>';
     showNotification();
 

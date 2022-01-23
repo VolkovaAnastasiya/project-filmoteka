@@ -16,13 +16,13 @@
   line-height: 1.333 !important;
   border: none !important;
   border-radius: 5px !important;
-  width: 38px !important;
-  height: 38px !important;
+  width: 40px !important;
+  height: 40px !important;
   padding-top: 13px !important;
 
-  @media screen and (max-width: 768px) {
-    width: 40px !important;
-    height: 40px !important;
+  @media screen and (max-width: 786px) {
+    width: 30px !important;
+    height: 30px !important;
   }
 
   &:hover,
