@@ -1,5 +1,8 @@
 import axios from 'axios';
+
+import pagination  from './pagination';
 import { openSpinner, closeSpinner } from '../dev-5/spinner';
+
 
 export default class ApiService {
   constructor() {
@@ -21,21 +24,47 @@ export default class ApiService {
         // Добавляет запись в хранилище при фетче
         localStorage.setItem('filmInfo', JSON.stringify(data.results));
 
-        console.log(data.total_pages);
-        this.incrementPage();
-        return data.results;
+        console.log(pagination._options)
+        // pagination.reset();
+        // pagination.setTotalItem(data.total_results);
+// this.page = 
+        if (data.total_results > 10000) {
+          pagination.setTotalItems(10000)
+          pagination._options.totalItems = 10000;
+          return data.results;
+        } else {
+          pagination.setTotalItem(data.total_results) ;
+          // pagination.reset()
+        
+        
+          this.incrementPage();
+          return data.results;
+        }
+
       });
   }
   // Запрос с использованием поисковой строки
   async fetchSearchMovies() {
+    
     const url = `${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
     return await fetch(url)
       .then(response => response.json())
       .then(data => {
-        // Добавляет запись в хранилище при фетче
-        localStorage.setItem('filmInfo', JSON.stringify(data.results));
+          // pagination.setTotalItems(total);
+          console.log(pagination._options)
+          // Добавляет запись в хранилище при фетче
+          localStorage.setItem('filmInfo', JSON.stringify(data.results));
+          
+          // Нужночтоб сбрасывались страницы при поиске по условию
+          if (pagination._options.totalItems !== data.total_results) {
+          pagination._options.totalItems = data.total_results;
 
-        this.incrementPage();
+          this.incrementPage();
+          pagination.reset();
+         }
+        
+
+          
 
         return data.results;
       });

@@ -2,10 +2,15 @@ import movieTpl from '../../templates/film-card-main.hbs';
 import ApiService from '../dev-1/api.js';
 import { renderTrends } from '../dev-1/renders';
 import pagination from '../dev-1/pagination';
+
+
+
 const apiService = new ApiService();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
+
 import { showNotification } from '../dev-7/alert.js';
+
 
 searchForm.addEventListener('change', onFormSubmit);
 searchForm.addEventListener('submit', onFormSubmit);
@@ -14,11 +19,15 @@ function onFormSubmit(evt) {
   evt.preventDefault();
   apiService.page = 1;
   renderSearch();
-  pagination.reset();
+  // pagination.reset()
+  console.log( pagination.reset);
 }
 
 function renderSearch(currentPage) {
+  
+  // pagination.reset()
   const searchFieldValue = document.querySelector('.search-form_input').value;
+  console.log('sd',pagination)
 
   if (currentPage) {
     apiService.page = currentPage;
@@ -38,6 +47,7 @@ function renderSearchedFilms(data) {
   if (data.length === 0) {
     gallery.innerHTML = 'SORRY WE CANT FIND ANY MOVIE WITH THIS NAME';
     showNotification();
+
   } else {
     genreData(data);
   }
@@ -82,4 +92,6 @@ function idToGenre(film_list) {
   return film_list;
 }
 
+
 export { renderSearch, idToGenre, genreData };
+

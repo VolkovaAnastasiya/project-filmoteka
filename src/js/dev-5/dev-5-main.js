@@ -24,13 +24,19 @@ refs.mainLogo.addEventListener('click', onHomeBtnClick);
 
 function onHomeBtnClick(e) {
   e.preventDefault();
+
+  //apiService.resetPage();
+  pagination._options.totalItems = 10000;
+
   refs.homeBtn.classList.add('current-link');
   refs.libraryBtn.classList.remove('current-link');
-  apiService.resetPage();
+
   pagination.reset();
-  apiService.fetchMovieTrends(1).then(idToGenre).then(genreData);
+  apiService.fetchMovieTrends().then(idToGenre).then(genreData);
   paginationCont.classList.remove('pagination-container-is-hidden');
   sessionStorage.clear();
+  document.querySelector('.search-form_input').value = '';
+  
 }
 
 /////////////////////////////////// MyLibrary
