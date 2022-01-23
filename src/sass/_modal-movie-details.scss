@@ -28,7 +28,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  max-height: 100vh;
+  // max-height: 100vh;
   width: 280px;
   padding: 48px 20px 41px 20px;
 
@@ -36,13 +36,13 @@
     display: flex;
     margin: auto;
     width: 600px;
-    min-height: 582px;
+    // min-height: 582px;
     padding: 42px 29px 40px 28px;
   }
   @media (min-width: 1024px) {
     display: flex;
     width: 732px;
-    min-height: 628px;
+    // min-height: 628px;
     padding: 50px 30px 40px 30px;
   }
 
