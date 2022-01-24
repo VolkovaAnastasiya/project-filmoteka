@@ -80,11 +80,10 @@ overflow-y: auto;
   //   }
 }
 
-// .modal-close-icon__film{
-//  position: absolute;
-//    top: 5px;
-//   right: 5px;
-// }
+.modal-close-icon__film{
+  position: absolute;
+  transform: translate(-50%, -50%);
+ }
 
 //template
 .modal-details {
