@@ -8,6 +8,7 @@ const devGalleryMarkup = renderModalDev(devInfo)
 
 
 footerModalOpen.addEventListener('click',footerModalAction )
+devModalCloseBtn.addEventListener('click',footerModalAction );
 modalDevList.innerHTML = devGalleryMarkup;
 
 
@@ -23,7 +24,6 @@ modalDevList.innerHTML = devGalleryMarkup;
     function footerModalAction(evt) {
       const modalMoreDev = document.querySelectorAll('.dev-card-btn');
       modalMoreDev.forEach(elem => elem.addEventListener('click', onCardBtnClick))
-      devModalCloseBtn.addEventListener('click',footerModalAction );
       teamModal.classList.toggle('is-open');
       document.body.classList.toggle('is-overflow');
 }
