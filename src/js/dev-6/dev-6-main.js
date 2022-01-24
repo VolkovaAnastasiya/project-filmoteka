@@ -2,33 +2,30 @@ import { devInfo } from "./developers-info";
 
 const footerModalOpen = document.querySelector('.copyright_modal-open-button');
 const teamModal = document.querySelector('.modal-project-developers');
+const modalDevList = document.querySelector('.modal-project-developers__list');
+const devModalCloseBtn = document.querySelector('.dev-modal-close-button');
 const devGalleryMarkup = renderModalDev(devInfo)
 
 
-const modalDevList = document.querySelector('.modal-project-developers__list');
-const devModalCloseBtn = document.querySelector('.dev-modal-close-button');
-
-
 footerModalOpen.addEventListener('click',footerModalAction )
+modalDevList.innerHTML = devGalleryMarkup;
 
-function footerModalAction(evt) {
-  const devCardMore = document.querySelector('.modal-close-button__dev');
-  const modalMoreDev = document.querySelectorAll('.dev-card-btn');
 
 // Попытка обнулить открытые карточки, при закрытии модалки
-  // if (document.querySelectorAll('card-open-details')) {
+// if (document.querySelectorAll('card-open-details')) {
   //   document.querySelectorAll('card-open-details').classList = 'developer-card';
   // }
   // if (document.querySelectorAll('developer-card__comment is-open')) {
-  //   document.querySelectorAll('developer-card__comment is-open').classList.remove('is-open');
-  // }
+    //   document.querySelectorAll('developer-card__comment is-open').classList.remove('is-open');
+    // }
+        
 
-    
-  devModalCloseBtn.addEventListener('click',footerModalAction );
-  modalMoreDev.forEach(elem => elem.addEventListener('click', onCardBtnClick))
-  teamModal.classList.toggle('is-open');
-  document.body.classList.toggle('is-overflow');
-
+    function footerModalAction(evt) {
+      const modalMoreDev = document.querySelectorAll('.dev-card-btn');
+      modalMoreDev.forEach(elem => elem.addEventListener('click', onCardBtnClick))
+      devModalCloseBtn.addEventListener('click',footerModalAction );
+      teamModal.classList.toggle('is-open');
+      document.body.classList.toggle('is-overflow');
 }
 
 
@@ -72,4 +69,3 @@ function renderModalDev(dataArray) {
     }).join('');
 }
 
-modalDevList.innerHTML = devGalleryMarkup;
