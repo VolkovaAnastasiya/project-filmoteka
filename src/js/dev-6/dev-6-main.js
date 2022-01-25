@@ -1,39 +1,54 @@
 import { devInfo } from "./developers-info";
+import devCards from '../../templates/modal-developer-card.hbs';
 
 const footerModalOpen = document.querySelector('.copyright_modal-open-button');
 const teamModal = document.querySelector('.modal-project-developers');
 const modalDevList = document.querySelector('.modal-project-developers__list');
 const devModalCloseBtn = document.querySelector('.dev-modal-close-button');
-const devGalleryMarkup = renderModalDev(devInfo)
+const mybutton = document.querySelector('.btn-To-Top')
 
 
 footerModalOpen.addEventListener('click',footerModalAction )
-devModalCloseBtn.addEventListener('click',footerModalAction );
-modalDevList.innerHTML = devGalleryMarkup;
 
 
-// Попытка обнулить открытые карточки, при закрытии модалки
-// if (document.querySelectorAll('card-open-details')) {
-  //   document.querySelectorAll('card-open-details').classList = 'developer-card';
-  // }
-  // if (document.querySelectorAll('developer-card__comment is-open')) {
-    //   document.querySelectorAll('developer-card__comment is-open').classList.remove('is-open');
-    // }
-        
 
-    function footerModalAction(evt) {
-      const modalMoreDev = document.querySelectorAll('.dev-card-btn');
-      modalMoreDev.forEach(elem => elem.addEventListener('click', onCardBtnClick))
-      teamModal.classList.toggle('is-open');
-      document.body.classList.toggle('is-overflow');
+function footerModalAction() {
+  teamModal.classList.toggle('is-open');
+  document.body.classList.toggle('is-overflow');
+  renderModalDev(devInfo);
+  
+    //  Вешает и снимает слушатель на кнопкe закрытия модального окна
+   toggleButtons(teamModal.classList.contains('is-open'), devModalCloseBtn, 'click', footerModalAction );
+ 
+
+    //  Вешает и снимает слушатель на кнопках у карточек
+      const modalMoreInfoBtn = document.querySelectorAll('.dev-card-btn');
+      toggleButtonsforAll(teamModal.classList.contains('is-open'), modalMoreInfoBtn, 'click',  onCardBtnClick);
+      
+      // Убирает унопку UP, при открытой модалке
+      if (teamModal.classList.contains('is-open')) {
+        mybutton.style.display = 'none';
+      } else {
+        mybutton.style.display = 'block';
+      }
+
+
+      // Обнуляет открытые карточки послее закрытия модального окна.
+      if (teamModal.querySelector('card-open-details')) {
+    teamModal.querySelectorAll('card-open-details').classList ='developer-card';
+    teamModal.querySelectorAll('developer-card__comment is-open').classList.remove('is-open');
+
+  }
+ 
 }
-
+    
 
 function onCardBtnClick(evt) {
   const devDataDiv = evt.currentTarget.parentNode;
+
   evt.currentTarget.classList.toggle('button-active');
   devDataDiv.querySelector('.developer-card__comment').classList.toggle('is-open');
-
+  
   if (devDataDiv.parentNode.classList == 'developer-card') {
     devDataDiv.parentNode.classList = 'card-open-details';
     return
@@ -44,28 +59,24 @@ function onCardBtnClick(evt) {
     return
   }
  };
+ 
+ function renderModalDev(dataArray) { 
+   const cards = devCards(dataArray);
+  modalDevList.innerHTML = cards;
+ }
+ 
+ function toggleButtons(condition, target, event, foo) {    
+   if (condition === true) {
+      target.addEventListener(event, foo);
+   } else {
+      target.removeEventListener(event, foo); 
+ }
+};
 
-function renderModalDev(dataArray) { 
-   
-  return dataArray.map(dev => {
-   
-    return  `<li class="developer-card">
-   <div>
-      <div alt= "photo of ${dev.name}" class="developer-card__photo dev-${dev.id}"></div>
-      <div class="developer-card__text-box" >
-      <h2 class="developer-card__title">${dev.name}</h2>
-      <p class="developer-card__dev-part">${dev.devPart}</p>
-      <p class="developer-card__comment ">${dev.devComment}</p>
-      </div>
-      <button class="dev-card-btn" dev-modal-close>
-      <svg class="dev-card-icon" viewBox="0 0 32 32" >
-      
-<path d="M22.086 20.914l2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"></path>
-      
-      </svg>
-      </button>
-      </div>`;
-    
-    }).join('');
-}
-
+function toggleButtonsforAll(condition, target, evt, foo) {    
+   if (condition === true) {
+      target.forEach( elem => elem.addEventListener(evt, foo))
+   } else {
+      target.forEach (elem =>elem.removeEventListener(evt, foo)); 
+ }
+};

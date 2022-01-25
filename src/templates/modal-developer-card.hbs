@@ -1,0 +1,17 @@
+{{#each this}} <li class="developer-card">
+   <div>
+      <div alt= "photo of {{this.name}}" class="developer-card__photo dev-{{this.id}}"></div>
+      <div class="developer-card__text-box" >
+      <h2 class="developer-card__title">{{this.name}}</h2>
+      <p class="developer-card__dev-part">{{this.devPart}}</p>
+      <p class="developer-card__comment ">{{this.devComment}}</p>
+      </div>
+      <button class="dev-card-btn" dev-modal-close>
+      <svg class="dev-card-icon" viewBox="0 0 32 32" >
+      
+<path d="M22.086 20.914l2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"></path>
+      
+      </svg>
+      </button>
+      </div>
+      {{/each}}
