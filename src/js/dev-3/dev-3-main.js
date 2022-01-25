@@ -10,6 +10,7 @@ const modalFilm = document.querySelector('[data-film-modal]');
 const backdrop = document.querySelector('.backdrop__film');
 const boxFilm = document.querySelector('.modal__film-detalies');
 const libraryBtn = document.querySelector('.btn-myLibrary-js');
+const mybutton = document.querySelector('.btn-To-Top');
 
 openModal.addEventListener('click', onOpenModalFilm);
 closeModal.addEventListener('click', onCloseModalFilm);
@@ -21,6 +22,7 @@ function onOpenModalFilm(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
+  mybutton.style.display = 'none';
   const filmId = event.target.parentNode.id;
   save('filmId', filmId);
 
@@ -70,6 +72,7 @@ function renderModal(data) {
 function onCloseModalFilm(event) {
   document.querySelector('body').classList.remove('is-overflow');
   backdrop.classList.add('is-hidden');
+  mybutton.style.display = 'block';
 }
 
 function closeModalByEsc(e) {
@@ -297,7 +300,6 @@ const remove = key => {
     console.error('Remove state error: ', err);
   }
 };
-
 
 // Функция открытия трейлера
 function onTrailerBtnClick(e) {
