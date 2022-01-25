@@ -85,6 +85,26 @@ setInterval(closeSpinner, 500);
       });
   }
 
+// Получение key трейлера
+  async getTrailerKey(movieId) {
+    const url = `${this.BASE_URL}/movie/${movieId}/videos?api_key=${this.API_KEY}&language=en-US`;
+    return await axios
+      .get(url)
+      .then(response => {
+        // console.log('Video response', response.data);
+        if (response.data.results.length === 0) {
+          console.log('Нет трейлера');
+          return;
+        }
+        return response.data.results[0].key;
+      })
+      .catch(error => {
+        console.error('Something wrong with getTrailerUrl fetch', error.message);
+      });
+  }
+
+
+
   incrementPage() {
     this.page += 1;
   }

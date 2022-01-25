@@ -30,3 +30,22 @@ footer {
 .copyright p {
   display: inline-block;
 }
+
+.footer_svg{
+
+  animation: myAnim 1000ms linear 10ms infinite alternate backwards;
+}
+
+@keyframes myAnim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
