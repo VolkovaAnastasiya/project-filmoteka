@@ -7,15 +7,12 @@ const gallery = document.querySelector('.cards-gallery__list');
 function renderTrends(data) {
   sessionStorage.clear();
   const markup = movieTpl(data);
-  //console.log(data);
   gallery.innerHTML = markup;
 }
 
 // Рендер библиотеки
-
 function renderLibrary(data) {
   const markup = movieLibraryTpl(data);
-
   gallery.insertAdjacentHTML('beforeend', markup);
 }
 
