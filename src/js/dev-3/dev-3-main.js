@@ -1,6 +1,7 @@
 import movieModalTpl from '../../templates/film-details.hbs';
 import { renderMovies, clearFilmsGallery, moviesLibraryMarkup } from '../dev-5/dev-5-main.js';
 import ApiService from '../dev-1/api.js';
+import * as basicLightbox from 'basiclightbox';
 const apiService = new ApiService();
 
 const openModal = document.querySelector('[data-film-modal-open]');
@@ -47,9 +48,16 @@ function onOpenModalFilm(event) {
 
   const btnWatch = document.querySelector('.modal-details_watched-button');
   const btnQueue = document.querySelector('.modal-details_queue-button');
+  const btnWatchTrailer = document.querySelector('.btn_trailer');
 
   btnWatch.addEventListener('click', addWatcheIdFilm);
   btnQueue.addEventListener('click', addQueueIdFilm);
+  btnWatchTrailer.addEventListener('click', onTrailerBtnClick);
+
+  apiService.getTrailerKey(Number(filmId)).then(key => {
+    let trailerKey = key;
+    save('trailer', trailerKey);
+  });
 
   textModalBtn(Number(filmId));
 }
@@ -289,5 +297,16 @@ const remove = key => {
     console.error('Remove state error: ', err);
   }
 };
+
+
+// Функция открытия трейлера
+function onTrailerBtnClick(e) {
+  let trailerKey = get('trailer');
+  const trailer = basicLightbox
+    .create(
+      `<iframe width="300" height="300" src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen class="trailer"></iframe>`,
+    )
+    .show();
+}
 
 export { renderModal, onOpenModalFilm, test, remove, save, get };
