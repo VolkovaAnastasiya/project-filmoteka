@@ -9,8 +9,20 @@ const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.cards-gallery__list');
 const paginationCont = document.querySelector('.pagination-container');
 
-searchForm.addEventListener('change', onFormSubmit);
+searchForm.addEventListener('input', onFormInput);
 searchForm.addEventListener('submit', onFormSubmit);
+
+function onFormInput() { 
+  if (document.querySelector('.search-form_input').value.trim() !== '') {
+    return
+  }
+  apiService.page = 1;
+  pagination._options.totalItems = 10000;
+  apiService.fetchMovieTrends().then(idToGenre).then(genreData);
+  pagination.reset();
+  paginationCont.classList.remove('pagination-container-is-hidden');
+  }
+
 
 function onFormSubmit(evt) {
   evt.preventDefault();
