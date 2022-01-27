@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://github.com/PiekharievaK/project4-filmoteka",
+  "homepage": "https://github.com/VolkovaAnastasiya/project-filmoteka",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project4-filmoteka/"
+    "build": "parcel build src/*.html --public-url /project-filmoteka/"
   },
   "repository": {
     "type": "git",
