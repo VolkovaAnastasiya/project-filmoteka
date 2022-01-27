@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PiekharievaK/project4-filmoteka.git"
+    "url": "git+https://github.com/VolkovaAnastasiya/project-filmoteka.git"
   },
   "keywords": [],
   "author": "Kateryna Piekharieva <pechareva@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PiekharievaK/project4-filmoteka/issues"
+    "url": "https://github.com/VolkovaAnastasiya/project-filmoteka/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
