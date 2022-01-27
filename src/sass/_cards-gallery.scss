@@ -1,3 +1,9 @@
+section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .main-section {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -11,6 +17,7 @@
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 50px;
+  flex-grow: 1;
 
   @media (min-width: 768px) {
     padding-left: 76px;
@@ -118,6 +125,7 @@
 
 ////
 .gallery-warning {
+  text-align: center;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
