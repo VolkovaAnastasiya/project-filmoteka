@@ -42,12 +42,13 @@
             <td class="movie-details-data-left">Genre</td>
            
             <td class="movie-details-data-right">
-               {{!-- {{#if genres}} --}}
+               {{#if genres}}
                         {{#each genre_name}}
                         <span>{{this}}{{#unless @last}},{{/unless}}</span>
                         {{/each}}
-                        {{!-- {{else}}<span>N/A</span>
-                        {{/if}}</td> --}}
+                        {{else}}<span>Information is absent
+</span>
+                        {{/if}}</td>
           </tr>
         </table>
         <p class="movie-details-data_description-title">ABOUT</p>

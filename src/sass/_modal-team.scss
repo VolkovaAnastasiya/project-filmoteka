@@ -1,57 +1,55 @@
-// Растигивает документ на весь экран, чтоб приклеить футер к низу страницы. Надо подправить картинку в хедере, убрав авто маржины
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-section {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.cards-gallery {
-  flex-grow: 1;
-}
-
 .is_clicked {
   transform: scale(1.5);
 }
 
 .developer-card__photo {
   display: block;
-  width: 100%;
-  height: auto;
+  // width: 100%;
+  // height: auto;
   margin: auto;
   background-size: contain;
-  background-image: url('../images/devs-photo/dev-1.jpg');
-  width: 100px;
+  // background-color: rgba(0, 0, 0, 0.12);
   background-position: center;
-  height: 100px;
+
   background-repeat: no-repeat;
+  @media (max-width: 767px) {
+    min-width: 100px;
+    min-height: 100px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    min-width: 150px;
+    min-height: 150px;
+  }
+
+  @media (min-width: 1024px) {
+    min-width: 175px;
+    min-height: 175px;
+  }
 }
 
-// .dev-1 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
-// .dev-2 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
-// .dev-3 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
-// .dev-4 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
-// .dev-5 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
-// .dev-6 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
-// .dev-7 {
-//   background-image: url('../images/devs-photo/dev-1.jpg');
-// }
+.dev-1 {
+  background-image: url('../images/devs-photo/dev-1.jpg');
+}
+.dev-2 {
+  background-image: url('../images/devs-photo/dev-2.jpg');
+}
+.dev-3 {
+  background-image: url('../images/devs-photo/dev-3.jpg');
+}
+.dev-4 {
+  background-image: url('../images/devs-photo/dev-4.jpg');
+}
+.dev-5 {
+  background-image: url('../images/devs-photo/dev-5.jpg');
+}
+.dev-6 {
+  background-image: url('../images/devs-photo/dev-6.jpg');
+}
+.dev-7 {
+  background-image: url('../images/devs-photo/dev-7.jpg');
+}
 
 .dev-modal-close-button {
   box-sizing: content-box;
@@ -93,7 +91,7 @@ section {
   background-color: white;
   margin-bottom: 15px;
   padding: 15px;
-  flex-basis: calc((100% - 90px) / 1);
+
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -103,15 +101,19 @@ section {
 .developer-card {
   @media (max-width: 767px) {
     &:not(:last-child) {
+      min-width: 75%;
       margin-bottom: 30px;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 1199px) {
-    flex-basis: calc((100% - 80px) / 2);
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex-basis: calc((100% - 150px) / 2);
+    font-size: 20px;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1024px) {
+    font-size: 20px;
+
     flex-basis: calc((100% - 90px) / 4);
   }
 }
@@ -119,6 +121,10 @@ section {
 .card-open-details {
   z-index: 1;
   max-width: 75vw;
+  & .developer-card__photo {
+    max-width: 250px;
+    min-height: 300px;
+  }
 }
 
 .developer-card:hover,
@@ -191,6 +197,10 @@ section {
   font-size: 16px;
   line-height: 1.19;
   color: black;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 .developer-card__dev-part,
 .developer-card__comment.is-open {
@@ -198,6 +208,10 @@ section {
   font-size: 16px;
   line-height: 1.19;
   margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 .developer-card__comment {
   display: none;
