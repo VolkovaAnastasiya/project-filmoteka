@@ -102,6 +102,7 @@ function closeModalByClick(e) {
 // Функция открытия трейлера
 function onTrailerBtnClick(e) {
   let trailerKey = get('trailer');
+  if (!trailerKey) {return}
   const trailer = basicLightbox
     .create(
       `<iframe width="300" height="300" src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen class="trailer"></iframe>`,
